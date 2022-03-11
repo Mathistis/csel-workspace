@@ -36,12 +36,12 @@ fi
 
 echo "Copying image"
 sudo dd if=$IMG_FOLDER/sdcard.img of=$DEV bs=512 status=progress
+#sudo dd if=$IMG_FOLDER/sdcard.img of=$DEV bs=512 status=progress
 if [ $? -ne 0 ]
 then
     echo "Error Copying Image"
     exit 1;
 fi
-
 
 echo "Generating CoolExt4FS"
 sudo parted -s -a optimal $DEV mkpart primary ext4 4329472s  5329472s
@@ -52,10 +52,17 @@ then
 fi
 
 sudo mkfs.ext4 $SUPP -L CoolExt4FS
-
-# sudo mkfs.ext4 $BOOT
-# sudo mkfs.ext4 $ROOTFS -L rootfs
 sync
+
+
+## Preparing boot partition
+mkdir /tmp/mathis
+sudo mount -t vfat $BOOT /tmp/mathis/
+sudo cp $IMG_FOLDER/../boot-scripts/boot_cifs.cmd /tmp/mathis/
+sudo cp $IMG_FOLDER/../uboot_env/uboot.env
+sudo umount /tmp/mathis
+##-----
+
 
 # sudo mount $BOOT /media/lmi/
 # sudo cp ~/workspace/nano/buildroot/output/images/Image /media/lmi

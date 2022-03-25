@@ -1,0 +1,2 @@
+/usr/local/bin/extract-rootfs.sh
+echo "//192.168.0.4/workspace /workspace cifs vers=1.0,username=root,password=toor,port=1445,noserverino" >> /rootfs/etc/fstab

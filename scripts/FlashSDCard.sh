@@ -44,23 +44,27 @@ then
 fi
 
 echo "Generating CoolExt4FS"
-sudo parted -s -a optimal $DEV mkpart primary ext4 4329472s  5329472s
+# sudo parted -s -a optimal $DEV mkpart primary ext4 4329472s  5329472s
 if [ $? -ne 0 ]
 then
     echo "Error generating new partition"
     exit 1;
 fi
 
-sudo mkfs.ext4 $SUPP -L CoolExt4FS
+# sudo mkfs.ext4 $SUPP -L CoolExt4FS
 sync
 
+# /usr/local/bin/extract-rootfs.sh
+# echo "//192.168.0.4/workspace /workspace cifs vers=1.0,username=root,password=toor,port=1445,noserverino" >> /rootfs/etc/fstab
 
 ## Preparing boot partition
 mkdir /tmp/mathis
 sudo mount -t vfat $BOOT /tmp/mathis/
-sudo cp $IMG_FOLDER/../boot-scripts/boot_cifs.cmd /tmp/mathis/
-sudo cp $IMG_FOLDER/../uboot_env/uboot.env
+sudo cp $IMG_FOLDER/../boot-scripts/boot.cifs /tmp/mathis/
+sudo cp $IMG_FOLDER/../uboot_env/uboot.env /tmp/mathis/
 sudo umount /tmp/mathis
+
+sync
 ##-----
 
 

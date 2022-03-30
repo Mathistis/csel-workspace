@@ -7,18 +7,34 @@
 
 #include <linux/delay.h>
 #include <linux/kthread.h>
+#include <linux/wait.h>		/* needed for waitqueues handling */
 
 static char *text = "dummy text";
 module_param(text, charp, 0664);
 static int elements = 1;
 module_param(elements, int, 0);
-static struct task_struct *dummy_task;
-static int my_dummy_thread(void *data)
+static struct task_struct *wakeup_task;
+static struct task_struct *sleepy_task;
+
+DECLARE_WAIT_QUEUE_HEAD(queue);
+
+static int sleep_for_ever(void *data)
+{
+	while (wait_event_interruptible(queue, (1==1)))
+	{
+		if(kthread_should_stop()) break;
+		pr_info("AAaaAaAaarrg !!! WHO THE F WOKE ME UP ?!!!!\n");
+	}
+	return 0;
+}
+
+static int wakeup(void *data)
 {
 	
 	while (!kthread_should_stop())
 	{
 		pr_info("Kikou ! I'm sleepy zzzzzz\n");
+		wake_up_interruptible(&queue);
 		ssleep(5);
 	}
 	return 0;
@@ -28,7 +44,8 @@ static int __init skeleton_init(void)
 {
 	pr_info("Linux module 01 skeleton loaded\n");
 	pr_debug("  text: %s\n  elements: %d\n", text, elements);
-	dummy_task = kthread_run(&my_dummy_thread, NULL, "Cool Thread");
+	sleepy_task = kthread_run(&sleep_for_ever, NULL, "Cool Thread that sleep ");
+	wakeup_task = kthread_run(&wakeup, NULL, "Cool Thread that wakeup");
 
 	return 0;
 }
@@ -36,7 +53,8 @@ static int __init skeleton_init(void)
 static void __exit skeleton_exit(void)
 {
 	int err = 0;
-	err = kthread_stop (dummy_task);
+	err = kthread_stop (sleepy_task);
+	err |= kthread_stop (wakeup_task);
 	if (err){
 		pr_debug("Can't stop dummy thread\n");
 	}

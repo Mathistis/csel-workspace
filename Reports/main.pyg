@@ -1,0 +1,18 @@
+#include <stdio.h>
+static int uninitializedMemory(void)
+{
+    int i;
+    int a[10];
+    for (i = 0; i < 9; i++)
+        a[i] = i;
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+    return 0;
+}
+int main(){
+    uninitializedMemory();
+    return 0;
+}

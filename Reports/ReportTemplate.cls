@@ -1,3 +1,4 @@
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ReportTemplate}[2018/12/15 (HEIA-FR) School of Engineering Fribourg - LaTeX Template (unofficial)]
 
@@ -67,16 +68,19 @@
             citecolor = blue,
             anchorcolor = black]{hyperref}
 
+
+
+
 %% Code
-% \usepackage[newfloat]{minted}
-% \usemintedstyle{pastie}
-% \setminted{
-%     linenos=true,
-%     tabsize=2,
-%     breaklines,
-%     bgcolor=white,
-%     frame=leftline
-% }
+\usepackage[newfloat]{minted}
+\usemintedstyle{pastie}
+\setminted{
+    linenos=true,
+    tabsize=2,
+    breaklines,
+    bgcolor=white,
+    frame=leftline
+}
 
 %% tables
 \usepackage{longtable}
@@ -123,7 +127,7 @@
 \pagestyle{fancy}
 \rhead{Master MSE}
 \makeatletter
-\lhead{Romain Agostinelli, Raemy Mathis, Macherel Rémy}
+\lhead{Raemy Mathis, Macherel Rémy}
 \makeatother
 
 
@@ -212,17 +216,18 @@
 
 
 % Minted configuration for caption:
-% \newenvironment{code}{\captionsetup{type=listing}}{}
-% \SetupFloatingEnvironment{listing}{name=Code}
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Code}
 
-%\renewtcblisting{minted}[3][]{
-%enhanced,
-%breakable,% Allow page breaks
-%listing engine=minted,
-%listing only,#1, title=#3, minted language=#2,
-%colbacktitle=mintedframe,      % Title background color
-%colframe=mintedframe,
-%sharp corners, top=0mm, bottom=0mm,
-%title code={\path[draw=mintedframe,dashed, fill=mintedbackground](title.south west)--(title.south east);},
-%frame code={\path[draw=mintedframe, fill=mintedbackground](frame.south west) rectangle (frame.north east);}
-%}
+
+% \renewtcblisting{minted}[3][]{
+% enhanced,
+% breakable,% Allow page breaks
+% listing engine=minted,
+% listing only,#1, title=#3, minted language=#2,
+% colbacktitle=mintedframe,      % Title background color
+% colframe=mintedframe,
+% sharp corners, top=0mm, bottom=0mm,
+% title code={\path[draw=mintedframe,dashed, fill=mintedbackground](title.south west)--(title.south east);},
+% frame code={\path[draw=mintedframe, fill=mintedbackground](frame.south west) rectangle (frame.north east);}
+% }

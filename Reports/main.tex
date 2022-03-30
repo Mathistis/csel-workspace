@@ -49,15 +49,22 @@ Il faut commencer par modifier le script de démarrage en modifiant les deux lig
  fatload mmc \textbf{0} \$kernel\_addr\_r\ Image \newline
  fatload mmc \textbf{0} \$fdt\_addr\_r nanopi-neo-plus2.dtb \newline
 On peut avoir des informations sur les mmc disponible en interrompant le U-Boot et en tappant la commande : \newline
- => mmc list\newline
- mmc@1c0f000: 0 (SD) \newline
- mmc@1c10000: 2 \newline
- mmc@1c11000: 1 \newline
-Il faut ensuite recompiler le script avec la commande make et reflasher la carte. Enfin il ne faut pas oublier également de charger l'Image et le device tree depuis la carte SD vers la mmc interne (a faire une seul fois) ainsi que de modifier le script de démarrage pour utiliser celui que l'on vient de compiler avec la commande : \newline
- setenv boot\_scripts boot.cifs \newline
-Finalement, on peut sauvegarder les modifications avec la commande :\newline
- saveenv
+\begin{minted}{shell}
+    => mmc list
+    mmc@1c0f000: 0 (SD) 
+    mmc@1c10000: 2 
+    mmc@1c11000: 1 
+\end{minted}
 
+Il faut ensuite recompiler le script avec la commande make et reflasher la carte. Enfin il ne faut pas oublier également de charger l'Image et le device tree depuis la carte SD vers la mmc interne (a faire une seul fois) ainsi que de modifier le script de démarrage pour utiliser celui que l'on vient de compiler avec la commande : \newline
+\begin{minted}{shell}
+    setenv boot_scripts boot.cifs
+\end{minted}
+ 
+Finalement, on peut sauvegarder les modifications avec la commande :\newline
+\begin{minted}{shell}
+    saveenv
+\end{minted}
 \subsection{Dans le support de cours, on trouve différentes configurations de l’environnement de développement. Qu’elle serait la configuration optimale pour le développement uniquement d’applications en espace utilisateur ?}
 Si on développe uniquement dans le userspace, on pourrait imaginer que l'on flash la eMMC comme décrit à la question précédente pour s'affranchir de carte SD et qu'on développe sur notre ordinateur.
 Pour le partage des programmes une partition NFS ou la partition CIFS sont très bien et permettent de rendre transparent le transfert des programmes.
@@ -71,7 +78,9 @@ Les Makefile
 Tout le reste (déjà globalement vu dans un cours précédent)
 \section{Infos utiles à retenir}
 Pour monter automatiquement un disque réseau cifs : \newline
-echo "//<server\_ip>/workspace /workspace cifs username=<username>,\newline password=<password>,port=1445,noserverino" >> /etc/fstab \newline
+\begin{minted}[fontsize=\tiny]{shell}
+echo "//<server_ip>/workspace /workspace cifs username=<username>, password=<password>,port=1445,noserverino" >> /etc/fstab
+\end{minted}
 Lorsqu'on créer une nouvelle partition, il faut l'aligner sur 2048 bits. On peut calculer le début de la prochaine partition par rapport à la précédente comme ceci : \newline
 <prev\_end\_sector> + (2048 - <prev\_end\_sector>  \% 2048)\newline
 \section{Feedback global}

@@ -20,7 +20,7 @@ DECLARE_WAIT_QUEUE_HEAD(queue);
 
 static int sleep_for_ever(void *data)
 {
-	while (wait_event_interruptible(queue, (1==1)))
+	while (!wait_event_interruptible(queue, (1==1)))
 	{
 		if(kthread_should_stop()) break;
 		pr_info("AAaaAaAaarrg !!! WHO THE F WOKE ME UP ?!!!!\n");

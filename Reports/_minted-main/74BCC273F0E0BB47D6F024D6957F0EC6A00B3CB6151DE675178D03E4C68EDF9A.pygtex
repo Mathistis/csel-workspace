@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{o}{=}\PYGZgt{} mmc list
+    mmc@1c0f000: \PYG{l+m}{0} \PYG{o}{(}SD\PYG{o}{)}
+    mmc@1c10000: \PYG{l+m}{2}
+    mmc@1c11000: \PYG{l+m}{1}
+\end{Verbatim}

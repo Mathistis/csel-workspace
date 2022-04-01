@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}//\PYGZlt{}server\PYGZus{}ip\PYGZgt{}/workspace /workspace cifs username=\PYGZlt{}username\PYGZgt{}, password=\PYGZlt{}password\PYGZgt{},port=1445,noserverino\PYGZdq{}} \PYGZgt{}\PYGZgt{} /etc/fstab
+\end{Verbatim}

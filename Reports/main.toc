@@ -39,3 +39,5 @@
 \contentsline {section}{\numberline {2.2}Feedback global}{4}{section.2.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}TP 3}{5}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Résumé du TP3}{5}{section.3.1}%

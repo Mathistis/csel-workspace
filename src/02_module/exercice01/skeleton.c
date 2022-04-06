@@ -25,6 +25,6 @@ static void __exit skeleton_exit(void)
 module_init (skeleton_init);
 module_exit (skeleton_exit);
 
-MODULE_AUTHOR ("Daniel Gachet <daniel.gachet@hefr.ch>");
+MODULE_AUTHOR ("Raemy Mathis, Remy Macherel");
 MODULE_DESCRIPTION ("Module skeleton");
 MODULE_LICENSE ("GPL");

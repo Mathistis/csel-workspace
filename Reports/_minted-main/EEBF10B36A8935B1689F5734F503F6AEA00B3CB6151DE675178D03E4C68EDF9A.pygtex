@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}salut\PYGZdq{}} \PYGZgt{} /dev/mymodule \PYG{c+c1}{\PYGZsh{}(pour écrire)}
+    cat /dev/mymodule \PYG{c+c1}{\PYGZsh{}(pour lire)}
+\end{Verbatim}

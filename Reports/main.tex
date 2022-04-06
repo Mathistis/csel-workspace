@@ -170,8 +170,13 @@ l'ordre des chiffres correspond à :
     \caption{Console log levels correspondance}
     \label{fig:LogLevels}
 \end{figure}
+\section{Synthèse des connaissances acquises}
+\subsection{Non acquis}
 
-\section{Feedback global}
+\subsection{Acquis, mais à exercer}
+
+\subsection{Parfaitement acquis}
+\section{Feedback exercices}
 \subsection{Exercice 01}
 L'exercice 01 ne nous a globalement pas posé de problèmes, nous avons suivi les
 slides du cours afin de créer le skeleton.c ainsi que son makefile. Nous l'avons
@@ -242,9 +247,100 @@ des tests ainsi qu'en discutant lors de la séance de laboratoire.\newline
 \subsection{Exercice 8}
 
 \chapter{TP 3}
-\section{Résumé du TP3}
-Pour ex 1 : Les pilotes orientés mémoire permettent d'accéder directement aux
-registres en programmant la MMU sans avoir besoin de créer un module noyau
+\section{Résumé du laboratoire}
+\section{Réponses aux questions}
+\section{Synthèse des connaissances acquises}
+\subsection{Non acquis}
+
+\subsection{Acquis, mais à exercer}
+
+\subsection{Parfaitement acquis}
+\section{Feedback}
+\subsection{Exercice 01}
+Les pilotes orientés mémoire permettent d'accéder directement aux
+registres en programmant la MMU sans avoir besoin de créer un module noyau.
+Pour cet exercice il s'agissait de créer un pilote orienté mémoire afin de
+permettre de lire le Chip-ID du processeur. Nous n'avons pas rencontré de
+problème particulier dans la réalisation de cet exercice.
+\subsection{Exercice 02}
+Afin de stocker dans une variable globale du pilote des données reçues par les
+commandes echo (write) et cat (read) nous avons implémenté un pilote orienté
+caractère. Pour ce faire il fallait (comme démontré dans les slides du cours)
+implémenter les différentes \textit{file operations} que sont
+read,write,open,release afin que celles-ci permettent les opérations demandées
+dans la consigne. Une fois ceci fait, la démarche veut que l'on place dans une
+structure de type \textit{file\_operations} ces différentes opérations comme le
+montre la figure suivante :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/Fops.png}
+    \caption{File operations structure}
+    \label{fig:Fops}
+\end{figure}
+Une fois ces operations implémentées, il faut, dans l'initialisation du module,
+utiliser \textit{alloc\_chrdev\_region} afin d'allouer un espace pour notre
+device. Si cette allocation se passe correctement, on peut utiliser
+\textit{cdev\_init} afin d'initialiser le device avec ses file operations. Ces
+opérations permettent de définir les opérations supportées par notre
+pilote.\newline
+A la destruction (exit) du device, on peut supprimer celui-ci à l'aide de
+\textit{cdev\_del} et désallouer la mémoire avec
+\textit{unregister\_chrdev\_region}. \newline
+Lorsque le code est écrit il suffisait de le compiler a l'aide la commande \textit{make},
+puis sur la cible utiliser
+\begin{minted}{shell} 
+    insmod mymodle.ko #(si pas d'arguments) ou 
+    insmod mymodule.ko <argName1>=<value1> <argName2>=<value2> #(si arguments)
+\end{minted}    
+afin de charger le device. Dans notre cas, nous n'avions pas print le major number dans
+les fonctions d'initialisation du device et donc afin de retrouver celui-ci nous
+avons utilisé la commande 
+\begin{minted}{shell}
+    cat /proc/devices 
+\end{minted}
+pour le retrouver. Une fois le major number connu, nous avons effectué la
+commande
+\begin{minted}{shell}
+    mknod /dev/mymodule c 511 0
+\end{minted}
+afin de créer un node pour le device. Une fois ceci fait il suffisait de tester
+l'écriture et la lecture avec par exemple
+\begin{minted}{shell}
+    echo "salut" > /dev/mymodule #(pour écrire)
+    cat /dev/mymodule #(pour lire)
+\end{minted} 
+Une fois que le node est créé, on peut lister le major/minor avec la commande 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/MajorMinor.png}
+    \caption{Major and Minor number}
+    \label{fig:MajorMinor}
+\end{figure}
+\newpage
+\subsection{Exercice 03}
+L'exercice 03 est une adaptation de l'exercice 2 afin de pouvoir définir par
+paramètre (par défaut 3) le nombre de devices pouvant être créés. Afin de tester
+ce fonctionnement nous avons tout d'abord adapté le code (voir code source),
+puis nous avons essayé de créer 4 nodes (commande \textit{mknode} avec 4 minor
+number différents). La création s'est effectuée mais lorsque l'on souhaite lire
+ou écrire dans le 4ème node cela ne marche pas. Cela est logique car le nombre
+de noeuds est limité à 3. Exemple :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/Ex3_cDev.png}
+    \caption{Exercice 03 tests}
+    \label{fig:Ex3Tests}
+\end{figure}
+\subsection{Exercice 04}
+Nous n'avons pas spécialement eu de difficultés à réaliser ces exercices mais
+ceci nous a permis de tester l'écriture dans un character device et de voir que
+l'on peut écrire jusqu'à ce que le buffer soit plein (le retour est -EIO). Une
+fois que celui-ci est plein, le programme casse la boucle et on va lire le
+contenu du device.
+\subsection{Exercice 05}
+
+\subsection{Exercice 07}
+
 \end{document}
 
 

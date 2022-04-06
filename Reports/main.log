@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  6 APR 2022 14:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  6 APR 2022 15:23
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1283,55 +1283,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--128
 
 [3]
 Chapter 2.
-<imageSources/console_loglevels.png, id=178, 664.4825pt x 411.5375pt>
+LaTeX Font Info:    Trying to load font information for TS1+pplx on input line 142.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1pplx.fd
+File: ts1pplx.fd 2004/09/06 font definitions for TS1/pplx.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 149--152
+
+ []
+
+<imageSources/console_loglevels.png, id=223, 664.4825pt x 411.5375pt>
 File: imageSources/console_loglevels.png Graphic file (type png)
 <use imageSources/console_loglevels.png>
-Package pdftex.def Info: imageSources/console_loglevels.png  used on input line 152.
+Package pdftex.def Info: imageSources/console_loglevels.png  used on input line 169.
 (pdftex.def)             Requested size: 280.08063pt x 173.46625pt.
 [4
 
- <./imageSources/console_loglevels.png>]
-Overfull \hbox (15.96275pt too wide) in paragraph at lines 158--172
+]
+<imageSources/ModuleParams.png, id=233, 299.1175pt x 85.31876pt>
+File: imageSources/ModuleParams.png Graphic file (type png)
+<use imageSources/ModuleParams.png>
+Package pdftex.def Info: imageSources/ModuleParams.png  used on input line 187.
+(pdftex.def)             Requested size: 280.08063pt x 79.89368pt.
+ [5 <./imageSources/console_loglevels.png> <./imageSources/ModuleParams.png>]
+Overfull \hbox (1.75945pt too wide) in paragraph at lines 211--223
+\T1/pplx/m/n/10 verses in-for-ma-tions sur le pro-cesseur. Il 'sagis-sait d'utiliser les fonc-tions \T1/pplx/m/it/10 re-quest_mem_region
+ []
+
+
+Overfull \hbox (15.96275pt too wide) in paragraph at lines 227--241
 \T1/pplx/m/n/10 Nous avons ini-tiale-ment dans l'exercice 7 peiné à utiliser les fonc-tions wait_event_interruptible
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--172
+Underfull \hbox (badness 10000) in paragraph at lines 227--241
 
  []
 
-[5]
+[6] [7]
 Chapter 3.
-[6
+[8
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 26CCCEE7F328E0C3DCD83F2212C42651;2074.
+(rerunfilecheck)             Checksum: CB5A4F77C5D9C88F33590F4B4D36D524;2662.
 runsystem(rm main.pyg)...executed.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 37840 strings out of 481239
- 734070 string characters out of 5920378
- 1529856 words of memory out of 5000000
- 52345 multiletter control sequences out of 15000+600000
- 567301 words of font info for 74 fonts, out of 8000000 for 9000
+ 37894 strings out of 481239
+ 735000 string characters out of 5920378
+ 1532057 words of memory out of 5000000
+ 52381 multiletter control sequences out of 15000+600000
+ 568472 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,11n,96p,1067b,789s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/cm-super/sftt0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (8 pages, 160806 bytes).
+Output written on main.pdf (10 pages, 178535 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 290 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 251 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 367 words of extra memory for PDF output out of 10000 (max. 10000000)
 

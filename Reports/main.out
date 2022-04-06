@@ -15,8 +15,17 @@
 \BOOKMARK [1][-]{section.1.5}{Feedback global}{chapter.1}% 15
 \BOOKMARK [2][-]{subsection.1.5.1}{Probl\350mes rencontr\351s}{section.1.5}% 16
 \BOOKMARK [0][-]{chapter.2}{TP 2}{}% 17
-\BOOKMARK [1][-]{section.2.1}{R\351ponses aux questions}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.1.1}{Trouvez la signification des 4 valeurs affich\351es lorsque l\220on tape la commande cat /proc/sys/kernel/printk}{section.2.1}% 19
-\BOOKMARK [1][-]{section.2.2}{Feedback global}{chapter.2}% 20
-\BOOKMARK [0][-]{chapter.3}{TP 3}{}% 21
-\BOOKMARK [1][-]{section.3.1}{R\351sum\351 du TP3}{chapter.3}% 22
+\BOOKMARK [1][-]{section.2.1}{R\351sum\351 du laboratoire}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.2}{R\351ponses aux questions}{chapter.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.1}{Trouvez la signification des 4 valeurs affich\351es lorsque l\220on tape la commande cat /proc/sys/kernel/printk}{section.2.2}% 20
+\BOOKMARK [1][-]{section.2.3}{Feedback global}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.3.1}{Exercice 01}{section.2.3}% 22
+\BOOKMARK [2][-]{subsection.2.3.2}{Exercice 02}{section.2.3}% 23
+\BOOKMARK [2][-]{subsection.2.3.3}{Exercice 3}{section.2.3}% 24
+\BOOKMARK [2][-]{subsection.2.3.4}{Exercice 4}{section.2.3}% 25
+\BOOKMARK [2][-]{subsection.2.3.5}{Exercice 5}{section.2.3}% 26
+\BOOKMARK [2][-]{subsection.2.3.6}{Exercice 6}{section.2.3}% 27
+\BOOKMARK [2][-]{subsection.2.3.7}{Exercice 7}{section.2.3}% 28
+\BOOKMARK [2][-]{subsection.2.3.8}{Exercice 8}{section.2.3}% 29
+\BOOKMARK [0][-]{chapter.3}{TP 3}{}% 30
+\BOOKMARK [1][-]{section.3.1}{R\351sum\351 du TP3}{chapter.3}% 31

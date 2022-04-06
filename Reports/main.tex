@@ -90,14 +90,15 @@ flash la eMMC comme décrit à la question précédente pour s'affranchir de car
 SD et qu'on développe sur notre ordinateur. Pour le partage des programmes une
 partition NFS ou la partition CIFS sont très bien et permettent de rendre
 transparent le transfert des programmes.
-
+\newpage
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 Aucune
 \subsection{Acquis, mais à exercer}
-Les Makefile
+Les Makefile, debugging (GDB/HDB Server), Principe CIFS
 \subsection{Parfaitement acquis}
-Tout le reste (déjà globalement vu dans un cours précédent)
+Le reste comme par exemple ce qui est commande, connexion, Linux (déjà
+globalement vu dans un cours précédent)
 \section{Infos utiles à retenir}
 Pour monter automatiquement un disque réseau cifs : \newline
 \begin{minted}[fontsize=\tiny]{shell}
@@ -109,9 +110,29 @@ calculer le début de la prochaine partition par rapport à la précédente comm
 ceci : \newline
 <prev\_end\_sector> + (2048 - <prev\_end\_sector>  \% 2048)
 \section{Feedback global}
-Dans l'ensemble laboratoire très intéressant. Assez dirigé pour nous indiquer la
-bonne voie mais pas trop pour qu'on puisse tester des choses. Nous aurions bien
-souhaité un peu plus de maitère sur les Makefiles.
+Dans l'ensemble laboratoire très intéressant et bon point de départ pour un
+cours comme celui-ci. Assez dirigé pour nous indiquer la bonne voie mais pas
+trop pour qu'on puisse tester des choses. Nous aurions bien souhaité un peu plus
+de maitère sur les Makefiles.\newline
+Nous avons également pour le flash de la carte SD développé un script permettant
+ceci de manière automatique (à voir dans le dossier script le FlashSDCard.sh).
+Ce script permet donc le flash de la SD Card avec les fichiers nécessaires sans
+utiliser le logiciel \textit{Balena}. Afin de l'utiliser, il suffirait de
+modifier le chemin d'accès à l'image (ligne 2 du script). Il a également été
+très intéressant de découvrir les differentes méthodes de debugging possibles
+lors du développement de systèmes embarqués. Parmis celles vues en cours, nous
+avons particulièrement testé la méthode utilisant GDB / GDB Server. La capacité
+de cette méthode à réaliser du débugging à distance était pour nous un point
+fort. Cette méthode permettait entre autres d'exécuter le code présent sur la
+cible pas à pas et de découvrir de potentielles erreurs.\newline
+\subsection{Problèmes rencontrés}
+Pour un des membres du groupe, une fois le CIFS mis en place, le nanoPi était
+incapable de démarrer et semblait relancer sa séquence de boot indéfiniment.
+Nous avons par la suite déterminé que ceci était dû à une trop faible
+alimentation via un HUB USB qui faisait que lorsque le nanoPi tentait de se
+connecter via le réseau la tension n'était pas suffisante et celui-ci
+s'éteignait puis rebootait directement.
+
 \chapter{TP 2}
 \section{Réponses aux questions}
 \subsection{Trouvez la signification des 4 valeurs affichées lorsque l’on tape la commande cat /proc/sys/kernel/printk}

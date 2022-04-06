@@ -18,9 +18,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2.6}Dans le support de cours, on trouve différentes configurations de l’environnement de développement. Qu’elle serait la configuration optimale pour le développement uniquement d’applications en espace utilisateur ?}{2}{subsection.1.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Synthèse des connaissances acquises}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Synthèse des connaissances acquises}{3}{section.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.3.1}Non acquis}{2}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.1}Non acquis}{3}{subsection.1.3.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3.2}Acquis, mais à exercer}{3}{subsection.1.3.2}%
 \defcounter {refsection}{0}\relax 
@@ -29,6 +29,8 @@
 \contentsline {section}{\numberline {1.4}Infos utiles à retenir}{3}{section.1.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.5}Feedback global}{3}{section.1.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.5.1}Problèmes rencontrés}{3}{subsection.1.5.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}TP 2}{4}{chapter.2}%
 \defcounter {refsection}{0}\relax 

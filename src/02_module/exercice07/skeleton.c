@@ -15,14 +15,20 @@ static int elements = 1;
 module_param(elements, int, 0);
 static struct task_struct *wakeup_task;
 static struct task_struct *sleepy_task;
+static atomic_t punch;
 
 DECLARE_WAIT_QUEUE_HEAD(queue);
 
 static int sleep_for_ever(void *data)
 {
-	while (!wait_event_interruptible(queue, (1==1)))
+	while (!kthread_should_stop())
 	{
-		if(kthread_should_stop()) break;
+		int status = wait_event_interruptible(queue, atomic_read(&punch) != 0);
+		if(status == -ERESTARTSYS) {
+			break;
+			pr_info("Sleepy thread interrupted\n");
+		}
+		atomic_dec (&punch);
 		pr_info("AAaaAaAaarrg !!! WHO THE F WOKE ME UP ?!!!!\n");
 	}
 	return 0;
@@ -34,6 +40,7 @@ static int wakeup(void *data)
 	while (!kthread_should_stop())
 	{
 		pr_info("Kikou ! I'm sleepy zzzzzz\n");
+		atomic_set(&punch, 1);
 		wake_up_interruptible(&queue);
 		ssleep(5);
 	}

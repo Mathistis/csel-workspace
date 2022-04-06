@@ -338,7 +338,13 @@ l'on peut écrire jusqu'à ce que le buffer soit plein (le retour est -EIO). Une
 fois que celui-ci est plein, le programme casse la boucle et on va lire le
 contenu du device.
 \subsection{Exercice 05}
-
+Implémentation d'une classe permettant de valider le fonctionnement du sysfs. 
+Nous avons décidé de réaliser l'implémentation uniquement avec une classe et non
+des misc ou platform device. Nous avons rencontrés passablement de problèmes
+avec l'utilisations de macros telles que \textit{DEVICE\_ATTR} et de fonctions
+comme \textit{device\_create\_file} car certains de leurs arguments ne nous
+étaient pas clair et il nous a été assez compliqué de trouver de la
+documentation dessus.
 \subsection{Exercice 07}
 
 \end{document}

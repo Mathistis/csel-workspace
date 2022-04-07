@@ -78,16 +78,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.3}Parfaitement acquis}{9}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Feedback}{9}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Feedback}{10}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Exercice 01}{9}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.1}Exercice 01}{10}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Exercice 02}{9}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Exercice 02}{10}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Exercice 03}{11}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.3}Exercice 03}{12}{subsection.3.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.4}Exercice 04}{11}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.4}Exercice 04}{12}{subsection.3.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.5}Exercice 05}{11}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.5}Exercice 05}{12}{subsection.3.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.6}Exercice 07}{11}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.6}Exercice 07}{12}{subsection.3.3.6}%

@@ -4,7 +4,7 @@
 \author{Macherel Rémy}
 \date{\today}
 \subtitle{Rapports des TP}
-\subsubtitle{}
+\subsubtitle{Git du projet : \href{https://github.com/Mathistis/csel-workspace}{https://github.com/Mathistis/csel-workspace}}
 \location{Fribourg,}
 \contact{remy.macherel@master.hes-so.ch}
 \version{1.0}
@@ -20,6 +20,7 @@
 
 \medskip
 \chapter{TP 1}
+
 \section{Résumé du travail pratique 1}
 Dans ce TP, nous allons mettre en place un environnement de développement afin
 de faciliter les développements futures. Cet environnement utilise des container
@@ -201,7 +202,6 @@ en utilisant la macro \textit{MODULE\_PARAM\_DESC(nomVariable,'description')}. L
 informations concernant ceci se trouvent dans le cours ainsi que sur
 \href{https://linuxkernel51.blogspot.com/2011/03/use-of-module-parameters-in-kernel.html}{ce
 site}.
-\newpage
 \subsection{Exercice 3}
 Voir \ref{sec:signification}.
 \subsection{Exercice 4}
@@ -245,10 +245,19 @@ doit re-vérifier sa condition. Ces informations furent découvertes en faisant
 des tests ainsi qu'en discutant lors de la séance de laboratoire.\newline
 \newpage
 \subsection{Exercice 8}
+Nous avons rencontré des difficultés pour retrouver la librairie gpio ainsi que
+les noms des méthodes. Nous avons du finalement regarder dans la solution
+fournie afin de trouver ces informations. Nous avons également eu quelques
+peines à retrouver quels flags à utiliser mais après recherche dans les supports
+de cours (cf. sp03.1\_ma\_csel\_noyau slide 61) ainsi que dans la documentation
+en ligne nous sommes parvenus à nos fins.
 
 \chapter{TP 3}
 \section{Résumé du laboratoire}
-\section{Réponses aux questions}
+Ce travail de laboratoire consiste à mettre en pratique les notions vues dans le
+cours en ce qui concerne les pilotes de périphériques. Ceci se compose de 6
+exercices pour lesquels un feedback expliquant les difficultés rencontrées et
+quelques explications sur des notions que nous avons identifiées comme importantes.
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 
@@ -346,7 +355,10 @@ comme \textit{device\_create\_file} car certains de leurs arguments ne nous
 étaient pas clair et il nous a été assez compliqué de trouver de la
 documentation dessus.
 \subsection{Exercice 07}
-
+Nous avons découvert lors de ce travail que la fonction \textit{poll\_wait}
+permet l'attente sur un file descriptor. Nous avons donc utilisé ceci lié avec
+l'utilisation d'une wait\_queue afin de réaliser les choses demandées dans ce
+tp.
 \end{document}
 
 

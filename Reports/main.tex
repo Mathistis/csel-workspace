@@ -31,7 +31,7 @@ afin de partager facilement les programmes cross-compilés avec le NanoPi.
 \subsection{Comment faut-il procéder pour générer le U-Boot ?}
 On peut regénérer le u-boot uniquement avec la commande : make
 uboot-rebuild\newline
-See : https://github.com/ARM-software/u-boot/blob/master/Makefile \newline
+See : \href{https://github.com/ARM-software/u-boot/blob/master/Makefile}{u-boot makefile} \newline
 --> TODO : Ajouter 5-6 lignes qui expliquent ce que fais le make de U-Boot
 \subsection{Comment peut-on ajouter et générer un package supplémentaire dans le Buildroot ?}
 e ne comprends pas trop le sens de la question mais au sens général, il faut
@@ -323,8 +323,8 @@ paramètre (par défaut 3) le nombre de devices pouvant être créés. Afin de t
 ce fonctionnement nous avons tout d'abord adapté le code (voir code source),
 puis nous avons essayé de créer 4 nodes (commande \textit{mknode} avec 4 minor
 number différents). La création s'est effectuée mais lorsque l'on souhaite lire
-ou écrire dans le 4ème node cela ne marche pas. Cela est logique car le nombre
-de noeuds est limité à 3. Exemple :
+ou écrire dans le 3ème node cela ne marche pas. Cela est logique car le nombre
+de noeuds est limité à 2, cela affiche que le device n'existe pas. Exemple :
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{imageSources/Ex3_cDev.png}

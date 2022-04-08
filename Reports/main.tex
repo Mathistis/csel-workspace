@@ -1,5 +1,5 @@
 \documentclass{ReportTemplate}
-
+\usepackage{titlesec}
 \title{CSEL}
 \author{Macherel Rémy}
 \date{\today}
@@ -8,10 +8,9 @@
 \location{Fribourg,}
 \contact{remy.macherel@master.hes-so.ch}
 \version{1.0}
-
-
-
+\titlespacing*{\chapter}{0pt}{-60pt}{20pt}
 \begin{document}
+
 \maketitlepage
 
 \newpage
@@ -19,6 +18,14 @@
 \maketableofcontent
 
 \medskip
+
+\titleformat{\chapter}[display]
+    {\Huge\bfseries}
+    {}
+    {0pt}
+    {\thechapter.\ }
+    
+
 \chapter{TP 1}
 
 \section{Résumé du travail pratique 1}
@@ -30,10 +37,17 @@ cross-compilation et l'autre pour la mise en place d'une partition réseau SAMBA
 afin de partager facilement les programmes cross-compilés avec le NanoPi.
 \section{Réponses aux questions}
 \subsection{Comment faut-il procéder pour générer le U-Boot ?}
-On peut regénérer le u-boot uniquement avec la commande : make
-uboot-rebuild\newline
+Il faut tout 'dabord aller dans le directory buildroot avec la commande 
+\begin{minted}{shell}
+    cd /buildroot
+\end{minted}
+On peut ensuite regénérer le u-boot uniquement avec la commande : 
+\begin{minted}{shell}
+    make u-boot # ou
+    make u-boot-rebuild
+\end{minted}
 See : \href{https://github.com/ARM-software/u-boot/blob/master/Makefile}{u-boot makefile} \newline
---> TODO : Ajouter 5-6 lignes qui expliquent ce que fais le make de U-Boot
+
 \subsection{Comment peut-on ajouter et générer un package supplémentaire dans le Buildroot ?}
 e ne comprends pas trop le sens de la question mais au sens général, il faut
 ajouter le binaire ainsi que des fichiers de configurations (qui définissent par
@@ -249,7 +263,6 @@ infinie car le fait que la condition soit vraie lui permettait de toujours
 passer par dessus la queue. Le wake\_up sert donc juste à indiquer au wait qu'il
 doit re-vérifier sa condition. Ces informations furent découvertes en faisant
 des tests ainsi qu'en discutant lors de la séance de laboratoire.\newline
-\newpage
 \subsection{Exercice 8}
 Nous avons rencontré des difficultés pour retrouver la librairie gpio ainsi que
 les noms des méthodes. Nous avons du finalement regarder dans la solution
@@ -266,12 +279,10 @@ exercices pour lesquels un feedback expliquant les difficultés rencontrées et
 quelques explications sur des notions que nous avons identifiées comme importantes.
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
-Rien car à l'aide des recherches menées durant la réalisation du TP nous avons
-pu bien apprendre les fonctionnements et utilisations des thèmes abordés dans
-celui-ci.
-Cependant la création de misc devices ou platform device ne fut pas expérimentée
-par manque de temps. Nous avons tout de même analysé le code fourni en solution
-afin de les comprendre mais les considérer comme acquis serait présomptueux.
+Les fonctions de polling et le service select sont des sujets non-acquis pour
+nous. Nous avons éprouvé beaucoup de difficultés à les comprendre ainsi qu'à les
+mettre en oeuvre. Nous allons devoir approfondir ce sujet afin de pouvoir le
+considérer comme acquis.
 \subsection{Acquis, mais à exercer}
 Le character devices ont été pour nous relativement compliqué à prendre en main,
 nous avons fini par comprendre leur fonctionnement mais plus de pratique
@@ -376,10 +387,12 @@ comme \textit{device\_create\_file} car certains de leurs arguments ne nous
 étaient pas clair et il nous a été assez compliqué de trouver de la
 documentation dessus.
 \subsection{Exercice 07}
-Nous avons découvert lors de ce travail que la fonction \textit{poll\_wait}
-permet l'attente sur un file descriptor. Nous avons donc utilisé ceci lié avec
-l'utilisation d'une wait\_queue afin de réaliser les choses demandées dans ce
-tp.
+Pour être honnêtes nous avons eu beaucoup de difficultés à réaliser cet exercice
+et ceci malgré de nombreuses recherches (que ce soit dans le cours ou sur
+internet). Nous avons dû passablement s'appuyer sur le corrigé afin de réaliser
+cet exercice, malgré l'envie de le faire au maximum indépendemment. C'est
+surtout l'utilisation de \textit{poll} et \textit{select} qui nous ont donné
+beaucoup fil à retordre.
 \end{document}
 
 

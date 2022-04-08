@@ -1,14 +1,14 @@
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ReportTemplate}[2018/12/15 (HEIA-FR) School of Engineering Fribourg - LaTeX Template (unofficial)]
-
+\ProvidesClass{ReportTemplate}[Master MSE Report template]
+% 2018/12/15 (HEIA-FR) School of Engineering Fribourg - LaTeX Template (unofficial)
 % Passes all the received arguments to the article class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
 % Ends options processing
 \ProcessOptions \relax
 
-% This class is based on the article class
+% This class is based on the report class
 \LoadClass{report}
 
 
@@ -125,12 +125,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagestyle{fancy}
-\rhead{Master MSE}
 \makeatletter
-\lhead{Raemy Mathis, Macherel Rémy}
+\fancyhead[L]{Raemy Mathis, Macherel Rémy, CSEL}
+\fancyhead[R]{\includegraphics[scale=0.3]{imageSources/LogoMSE.png}}
 \makeatother
 
-
+\fancypagestyle{plain}{%
+\fancyhead{}
+\makeatletter
+\fancyhead[L]{Raemy Mathis, Macherel Rémy, CSEL}
+\fancyhead[R]{\includegraphics[scale=0.3]{imageSources/LogoMSE.png}}
+\makeatother
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    COMMANDS                                     %
@@ -152,6 +160,8 @@
     \cleardoublepage
     \setcounter{page}{1}
 }
+
+
 
 \makeatletter
 \def\@subtitle{\empty}
@@ -202,7 +212,11 @@
             Raemy Mathis \\
             \href{mailto:mathis.raemy@master.hes-so.ch}{mathis.raemy@master.hes-so.ch}
         \end{minipage}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{imageSources/LogoHESSO.png}
+        \end{minipage}
         \hfill
+        
         %\vspace{3em}
         \vfill{}
         

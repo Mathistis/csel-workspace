@@ -1,0 +1,1 @@
+cmd_/workspace/src/03_kernel/exercice07/drv/mymodule.o := /buildroot/output/host/usr/bin/aarch64-buildroot-linux-gnu-ld -EL  -maarch64elf   -r -o /workspace/src/03_kernel/exercice07/drv/mymodule.o /workspace/src/03_kernel/exercice07/drv/skeleton.o

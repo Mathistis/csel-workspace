@@ -1,0 +1,1 @@
+cmd_/workspace/src/03_kernel/exercice07/drv/modules.order := {   echo /workspace/src/03_kernel/exercice07/drv/mymodule.ko; :; } | awk '!x[$$0]++' - > /workspace/src/03_kernel/exercice07/drv/modules.order

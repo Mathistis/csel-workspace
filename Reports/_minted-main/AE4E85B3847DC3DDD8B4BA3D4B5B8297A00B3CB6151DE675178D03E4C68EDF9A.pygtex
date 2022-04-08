@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    insmod mymodle.ko \PYG{c+c1}{\PYGZsh{}(si pas d\PYGZsq{}arguments) ou}
+    insmod mymodule.ko \PYGZlt{}argName1\PYGZgt{}\PYG{o}{=}\PYGZlt{}value1\PYGZgt{} \PYGZlt{}argName2\PYGZgt{}\PYG{o}{=}\PYGZlt{}value2\PYGZgt{} \PYG{c+c1}{\PYGZsh{}(si arguments)}
+\end{Verbatim}

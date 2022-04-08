@@ -1,17 +1,16 @@
 \documentclass{ReportTemplate}
-
+\usepackage{titlesec}
 \title{CSEL}
 \author{Macherel Rémy}
 \date{\today}
 \subtitle{Rapports des TP}
-\subsubtitle{}
+\subsubtitle{Git du projet : \href{https://github.com/Mathistis/csel-workspace}{https://github.com/Mathistis/csel-workspace}}
 \location{Fribourg,}
 \contact{remy.macherel@master.hes-so.ch}
 \version{1.0}
-
-
-
+\titlespacing*{\chapter}{0pt}{-60pt}{20pt}
 \begin{document}
+
 \maketitlepage
 
 \newpage
@@ -19,7 +18,16 @@
 \maketableofcontent
 
 \medskip
+
+\titleformat{\chapter}[display]
+    {\Huge\bfseries}
+    {}
+    {0pt}
+    {\thechapter.\ }
+    
+
 \chapter{TP 1}
+
 \section{Résumé du travail pratique 1}
 Dans ce TP, nous allons mettre en place un environnement de développement afin
 de faciliter les développements futures. Cet environnement utilise des container
@@ -29,10 +37,17 @@ cross-compilation et l'autre pour la mise en place d'une partition réseau SAMBA
 afin de partager facilement les programmes cross-compilés avec le NanoPi.
 \section{Réponses aux questions}
 \subsection{Comment faut-il procéder pour générer le U-Boot ?}
-On peut regénérer le u-boot uniquement avec la commande : make
-uboot-rebuild\newline
-See : https://github.com/ARM-software/u-boot/blob/master/Makefile \newline
---> TODO : Ajouter 5-6 lignes qui expliquent ce que fais le make de U-Boot
+Il faut tout 'dabord aller dans le directory buildroot avec la commande 
+\begin{minted}{shell}
+    cd /buildroot
+\end{minted}
+On peut ensuite regénérer le u-boot uniquement avec la commande : 
+\begin{minted}{shell}
+    make u-boot # ou
+    make u-boot-rebuild
+\end{minted}
+See : \href{https://github.com/ARM-software/u-boot/blob/master/Makefile}{u-boot makefile} \newline
+
 \subsection{Comment peut-on ajouter et générer un package supplémentaire dans le Buildroot ?}
 e ne comprends pas trop le sens de la question mais au sens général, il faut
 ajouter le binaire ainsi que des fichiers de configurations (qui définissent par
@@ -170,8 +185,19 @@ l'ordre des chiffres correspond à :
     \caption{Console log levels correspondance}
     \label{fig:LogLevels}
 \end{figure}
-
-\section{Feedback global}
+\section{Synthèse des connaissances acquises}
+\subsection{Non acquis}
+Rien car à l'aide des recherches menées durant la réalisation du TP nous avons
+pu bien apprendre les fonctionnements et utilisations des thèmes abordés dans celui-ci.
+\subsection{Acquis, mais à exercer}
+Utilisation des \textit{wait\_queue} des fonctions telles que
+\textit{wake\_up\_interruptible}, qui nous ont posé quelques problèmes (cf.
+feedback exercice 7). \newline
+L'utilisation des gpio pourrait nécessiter quelques approfondissements afin de
+mieux comprendre les subtilités.
+\subsection{Parfaitement acquis}
+Principes des modules noyaux avec et sans paramètres.
+\section{Feedback exercices}
 \subsection{Exercice 01}
 L'exercice 01 ne nous a globalement pas posé de problèmes, nous avons suivi les
 slides du cours afin de créer le skeleton.c ainsi que son makefile. Nous l'avons
@@ -196,7 +222,6 @@ en utilisant la macro \textit{MODULE\_PARAM\_DESC(nomVariable,'description')}. L
 informations concernant ceci se trouvent dans le cours ainsi que sur
 \href{https://linuxkernel51.blogspot.com/2011/03/use-of-module-parameters-in-kernel.html}{ce
 site}.
-\newpage
 \subsection{Exercice 3}
 Voir \ref{sec:signification}.
 \subsection{Exercice 4}
@@ -238,13 +263,136 @@ infinie car le fait que la condition soit vraie lui permettait de toujours
 passer par dessus la queue. Le wake\_up sert donc juste à indiquer au wait qu'il
 doit re-vérifier sa condition. Ces informations furent découvertes en faisant
 des tests ainsi qu'en discutant lors de la séance de laboratoire.\newline
-\newpage
 \subsection{Exercice 8}
+Nous avons rencontré des difficultés pour retrouver la librairie gpio ainsi que
+les noms des méthodes. Nous avons du finalement regarder dans la solution
+fournie afin de trouver ces informations. Nous avons également eu quelques
+peines à retrouver quels flags à utiliser mais après recherche dans les supports
+de cours (cf. sp03.1\_ma\_csel\_noyau slide 61) ainsi que dans la documentation
+en ligne nous sommes parvenus à nos fins.
 
 \chapter{TP 3}
-\section{Résumé du TP3}
-Pour ex 1 : Les pilotes orientés mémoire permettent d'accéder directement aux
-registres en programmant la MMU sans avoir besoin de créer un module noyau
+\section{Résumé du laboratoire}
+Ce travail de laboratoire consiste à mettre en pratique les notions vues dans le
+cours en ce qui concerne les pilotes de périphériques. Ceci se compose de 6
+exercices pour lesquels un feedback expliquant les difficultés rencontrées et
+quelques explications sur des notions que nous avons identifiées comme importantes.
+\section{Synthèse des connaissances acquises}
+\subsection{Non acquis}
+Les fonctions de polling et le service select sont des sujets non-acquis pour
+nous. Nous avons éprouvé beaucoup de difficultés à les comprendre ainsi qu'à les
+mettre en oeuvre. Nous allons devoir approfondir ce sujet afin de pouvoir le
+considérer comme acquis.
+\subsection{Acquis, mais à exercer}
+Le character devices ont été pour nous relativement compliqué à prendre en main,
+nous avons fini par comprendre leur fonctionnement mais plus de pratique
+pourrait nous aider à encore mieux maîtriser ceux-ci.\newline
+La création de devices par des classes est un sujet complexe qui nous a demandé
+passablement de temps de recherche et d'essais mais étant finalement arrivés au
+résultat escompté, nous considérons ceci comme acquis mais encore une fois plus
+de mises en pratique serait convenable afin de mieux les maitriser.
+\subsection{Parfaitement acquis}
+Nous ne considérons pas ces éléments comme parfaitement acquis car cela concèrne
+de la matière complète et poussée. C'est pour cela que nous considérons tout
+comme acquis mais il nous nécessiterait plus de pratique afin de considérer cela
+comme parfaitement acquis.
+\section{Feedback}
+\subsection{Exercice 01}
+Les pilotes orientés mémoire permettent d'accéder directement aux
+registres en programmant la MMU sans avoir besoin de créer un module noyau.
+Pour cet exercice il s'agissait de créer un pilote orienté mémoire afin de
+permettre de lire le Chip-ID du processeur. Nous n'avons pas rencontré de
+problème particulier dans la réalisation de cet exercice.
+\subsection{Exercice 02}
+Afin de stocker dans une variable globale du pilote des données reçues par les
+commandes echo (write) et cat (read) nous avons implémenté un pilote orienté
+caractère. Pour ce faire il fallait (comme démontré dans les slides du cours)
+implémenter les différentes \textit{file operations} que sont
+read,write,open,release afin que celles-ci permettent les opérations demandées
+dans la consigne. Une fois ceci fait, la démarche veut que l'on place dans une
+structure de type \textit{file\_operations} ces différentes opérations comme le
+montre la figure suivante :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/Fops.png}
+    \caption{File operations structure}
+    \label{fig:Fops}
+\end{figure}
+Une fois ces operations implémentées, il faut, dans l'initialisation du module,
+utiliser \textit{alloc\_chrdev\_region} afin d'allouer un espace pour notre
+device. Si cette allocation se passe correctement, on peut utiliser
+\textit{cdev\_init} afin d'initialiser le device avec ses file operations. Ces
+opérations permettent de définir les opérations supportées par notre
+pilote.\newline
+A la destruction (exit) du device, on peut supprimer celui-ci à l'aide de
+\textit{cdev\_del} et désallouer la mémoire avec
+\textit{unregister\_chrdev\_region}. \newline
+Lorsque le code est écrit il suffisait de le compiler a l'aide la commande \textit{make},
+puis sur la cible utiliser
+\begin{minted}{shell} 
+    insmod mymodle.ko #(si pas d'arguments) ou 
+    insmod mymodule.ko <argName1>=<value1> <argName2>=<value2> #(si arguments)
+\end{minted}    
+afin de charger le device. Dans notre cas, nous n'avions pas print le major number dans
+les fonctions d'initialisation du device et donc afin de retrouver celui-ci nous
+avons utilisé la commande 
+\begin{minted}{shell}
+    cat /proc/devices 
+\end{minted}
+pour le retrouver. Une fois le major number connu, nous avons effectué la
+commande
+\begin{minted}{shell}
+    mknod /dev/mymodule c 511 0
+\end{minted}
+afin de créer un node pour le device. Une fois ceci fait il suffisait de tester
+l'écriture et la lecture avec par exemple
+\begin{minted}{shell}
+    echo "salut" > /dev/mymodule #(pour écrire)
+    cat /dev/mymodule #(pour lire)
+\end{minted} 
+Une fois que le node est créé, on peut lister le major/minor avec la commande 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/MajorMinor.png}
+    \caption{Major and Minor number}
+    \label{fig:MajorMinor}
+\end{figure}
+\newpage
+\subsection{Exercice 03}
+L'exercice 03 est une adaptation de l'exercice 2 afin de pouvoir définir par
+paramètre (par défaut 3) le nombre de devices pouvant être créés. Afin de tester
+ce fonctionnement nous avons tout d'abord adapté le code (voir code source),
+puis nous avons essayé de créer 4 nodes (commande \textit{mknode} avec 4 minor
+number différents). La création s'est effectuée mais lorsque l'on souhaite lire
+ou écrire dans le 3ème node cela ne marche pas. Cela est logique car le nombre
+de noeuds est limité à 2, cela affiche que le device n'existe pas. Exemple :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/Ex3_cDev.png}
+    \caption{Exercice 03 tests}
+    \label{fig:Ex3Tests}
+\end{figure}
+\subsection{Exercice 04}
+Nous n'avons pas spécialement eu de difficultés à réaliser ces exercices mais
+ceci nous a permis de tester l'écriture dans un character device et de voir que
+l'on peut écrire jusqu'à ce que le buffer soit plein (le retour est -EIO). Une
+fois que celui-ci est plein, le programme casse la boucle et on va lire le
+contenu du device.
+\subsection{Exercice 05}
+Implémentation d'une classe permettant de valider le fonctionnement du sysfs. 
+Nous avons décidé de réaliser l'implémentation uniquement avec une classe et non
+des misc ou platform device. Nous avons rencontrés passablement de problèmes
+avec l'utilisations de macros telles que \textit{DEVICE\_ATTR} et de fonctions
+comme \textit{device\_create\_file} car certains de leurs arguments ne nous
+étaient pas clair et il nous a été assez compliqué de trouver de la
+documentation dessus.
+\subsection{Exercice 07}
+Pour être honnêtes nous avons eu beaucoup de difficultés à réaliser cet exercice
+et ceci malgré de nombreuses recherches (que ce soit dans le cours ou sur
+internet). Nous avons dû passablement s'appuyer sur le corrigé afin de réaliser
+cet exercice, malgré l'envie de le faire au maximum indépendemment. C'est
+surtout l'utilisation de \textit{poll} et \textit{select} qui nous ont donné
+beaucoup fil à retordre.
 \end{document}
 
 

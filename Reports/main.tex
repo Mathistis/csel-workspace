@@ -49,13 +49,14 @@ On peut ensuite regénérer le u-boot uniquement avec la commande :
 See : \href{https://github.com/ARM-software/u-boot/blob/master/Makefile}{u-boot makefile} \newline
 
 \subsection{Comment peut-on ajouter et générer un package supplémentaire dans le Buildroot ?}
-e ne comprends pas trop le sens de la question mais au sens général, il faut
+Nous ne comprenons pas trop le sens de la question mais au sens général, il faut
 ajouter le binaire ainsi que des fichiers de configurations (qui définissent par
 exemple les dépendances). On peut par exemple importer depuis GitLab
 automatiquement un packet, ou encore ajouter des paquet pour le user space ou le
 kernel space et tout cela change les étapes a effectuer. Pour plus
 d'informations, la section 18 de la
-\href{https://buildroot.org/downloads/manual/manual.html#adding-packages}{documentation}.
+\href{https://buildroot.org/downloads/manual/manual.html#adding-packages}{documentation}
+est très bien expliquée et apport de très bonnes informations.
 
 \subsection{Comment doit-on procéder pour modifier la configuration du noyau Linux ?}
 La commande make linux-menuconfig permet de configurer le noyau et on peut

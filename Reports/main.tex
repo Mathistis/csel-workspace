@@ -37,7 +37,7 @@ cross-compilation et l'autre pour la mise en place d'une partition réseau SAMBA
 afin de partager facilement les programmes cross-compilés avec le NanoPi.
 \section{Réponses aux questions}
 \subsection{Comment faut-il procéder pour générer le U-Boot ?}
-Il faut tout 'dabord aller dans le directory buildroot avec la commande 
+Il faut tout d'abord aller dans le directory buildroot avec la commande 
 \begin{minted}{shell}
     cd /buildroot
 \end{minted}
@@ -66,23 +66,29 @@ linux-rebuild afin de reconstruire le noyau.
 \subsection{Comment faut-il faire pour générer son propre rootfs ?}
 Comme c'est Buildroot qui s'occupe de générer le Rootfs, c'est lui qu'il faut
 configurer \newline
-cd /buildroot \newline
-make menuconfig \newline
-On peut aussi par exemple modifier le skelette utilisé pour modifier la
+\begin{minted}{shell}
+    cd /buildroot 
+    make menuconfig
+\end{minted}
+
+On peut aussi par exemple modifier le squelette utilisé pour modifier la
 structure des dossiers du rootfs. On peut aussi ajouter des
 fichiers/scripts/dossiers par défaut dans le rootfs en ajoutant un
 rootfs\_overlay
 \textit{/buildroot/board/friendlyarm/nanopi-neo-plus2/rootfs\_overlay/}. Ils
-seront automatiquement inséré dans le rootfs après chaques générations.
+seront automatiquement inséré dans le rootfs après chaque génération.
 
 \subsection{Comment faudrait-il procéder pour utiliser la carte eMMC en lieu et place de la carte SD ?}
 Il faut commencer par modifier le script de démarrage en modifiant les deux
 lignes suivantes. Il faut remplacer le \textbf{0} par le numéro de MMC que l'on
-veut : \newline
- fatload mmc \textbf{0} \$kernel\_addr\_r\ Image \newline
- fatload mmc \textbf{0} \$fdt\_addr\_r nanopi-neo-plus2.dtb \newline
+veut : 
+\begin{minted}{shell}
+    fatload mmc 0 $kernel_addr_r Image 
+    fatload mmc 0 $fdt_addr_r nanopi-neo-plus2.dtb 
+\end{minted}
+ 
 On peut avoir des informations sur les mmc disponible en interrompant le U-Boot
-et en tappant la commande : \newline
+et en tapant la commande : \newline
 \begin{minted}{shell}
     => mmc list mmc@1c0f000: 0 (SD) mmc@1c10000: 2 mmc@1c11000: 1 
 \end{minted}
@@ -129,14 +135,14 @@ ceci : \newline
 Dans l'ensemble laboratoire très intéressant et bon point de départ pour un
 cours comme celui-ci. Assez dirigé pour nous indiquer la bonne voie mais pas
 trop pour qu'on puisse tester des choses. Nous aurions bien souhaité un peu plus
-de maitère sur les Makefiles.\newline
+de matière sur les Makefiles.\newline
 Nous avons également pour le flash de la carte SD développé un script permettant
 ceci de manière automatique (à voir dans le dossier script le FlashSDCard.sh).
 Ce script permet donc le flash de la SD Card avec les fichiers nécessaires sans
 utiliser le logiciel \textit{Balena}. Afin de l'utiliser, il suffirait de
 modifier le chemin d'accès à l'image (ligne 2 du script). Il a également été
-très intéressant de découvrir les differentes méthodes de debugging possibles
-lors du développement de systèmes embarqués. Parmis celles vues en cours, nous
+très intéressant de découvrir les différentes méthodes de debugging possibles
+lors du développement de systèmes embarqués. Parmi celles vues en cours, nous
 avons particulièrement testé la méthode utilisant GDB / GDB Server. La capacité
 de cette méthode à réaliser du débugging à distance était pour nous un point
 fort. Cette méthode permettait entre autres d'exécuter le code présent sur la
@@ -232,22 +238,22 @@ créer ainsi qu'un texte à créer dans ces éléments. Nous avons créé une st
 l'élément suivant. Dans la fonction d'initialisation du module on se charge de
 créer un nombre d'éléments égal au paramètre transmis. Ensuite dans la méthode
 de sortie du module nous utilisons \textit{kfree} afin de libérer la mémoire
-allouée pour chaque élement.
+allouée pour chaque élément.
 \subsection{Exercice 5}
 Dans cet exercice il s'agissait de développer un module noyau permettant
 d'afficher diverses informations sur le processeur. Il 'sagissait d'utiliser les
 fonctions \textit{request\_mem\_region} afin de demander une région mémoire.
 Nous nous sommes tout d'abord interrogés sur le nombre de bytes à réserver puis
-après discussion avec le professeur nous avons décidà de réserver l'entièreté de
+après discussion avec le professeur nous avons décidé de réserver l'entièreté de
 la page (soit 0x1000). Nous avons également remarqué que la plupart du temps
 cette fonction se retrouvait avec un code d'erreur (0) à sa sortie. Cela est
 certainement dû au fait que des informations telles que la température ou la MAC
-adress sont certainement souvent requises par d'autres processus et donc déjà
+address sont certainement souvent requises par d'autres processus et donc déjà
 réservées. Nous avons ensuite utilisé \textit{ioremap} afin de mapper dans la
 mémoire virtuelle les adresses physiques requises pour que l'on puisse ensuite
 lire les valeurs nécessaires.
 \subsection{Exercice 6}
-Rien de spécial à signaler dans cet exercice. Il s'agissait d'instantier un
+Rien de spécial à signaler dans cet exercice. Il s'agissait d'instancier un
 thread qui affiche un message toutes les 5s.
 \subsection{Exercice 7}
 Nous avons initialement dans l'exercice 7 peiné à utiliser les fonctions
@@ -291,9 +297,9 @@ pourrait nous aider à encore mieux maîtriser ceux-ci.\newline
 La création de devices par des classes est un sujet complexe qui nous a demandé
 passablement de temps de recherche et d'essais mais étant finalement arrivés au
 résultat escompté, nous considérons ceci comme acquis mais encore une fois plus
-de mises en pratique serait convenable afin de mieux les maitriser.
+de mises en pratique serait convenable afin de mieux les maîtriser.
 \subsection{Parfaitement acquis}
-Nous ne considérons pas ces éléments comme parfaitement acquis car cela concèrne
+Nous ne considérons pas ces éléments comme parfaitement acquis car cela concerne
 de la matière complète et poussée. C'est pour cela que nous considérons tout
 comme acquis mais il nous nécessiterait plus de pratique afin de considérer cela
 comme parfaitement acquis.
@@ -391,7 +397,7 @@ documentation dessus.
 Pour être honnêtes nous avons eu beaucoup de difficultés à réaliser cet exercice
 et ceci malgré de nombreuses recherches (que ce soit dans le cours ou sur
 internet). Nous avons dû passablement s'appuyer sur le corrigé afin de réaliser
-cet exercice, malgré l'envie de le faire au maximum indépendemment. C'est
+cet exercice, malgré l'envie de le faire au maximum indépendamment. C'est
 surtout l'utilisation de \textit{poll} et \textit{select} qui nous ont donné
 beaucoup fil à retordre.
 \end{document}

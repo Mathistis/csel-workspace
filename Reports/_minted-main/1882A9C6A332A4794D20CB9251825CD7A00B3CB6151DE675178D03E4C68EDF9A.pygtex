@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    fatload mmc \PYG{l+m}{0} \PYG{n+nv}{\PYGZdl{}kernel\PYGZus{}addr\PYGZus{}r} Image
+    fatload mmc \PYG{l+m}{0} \PYG{n+nv}{\PYGZdl{}fdt\PYGZus{}addr\PYGZus{}r} nanopi\PYGZhy{}neo\PYGZhy{}plus2.dtb
+\end{Verbatim}

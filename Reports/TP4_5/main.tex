@@ -26,16 +26,28 @@
     {\thechapter.\ }
     
 
-\chapter{TP 4}
+\chapter{TP Systèmes de fichiers}
 
-\section{Résumé du travail pratique 4}
-
-\section{Réponses aux questions}
+\section{Résumé du travail pratique}
+Ce travail consiste à réaliser une application qui contrôle la fréquence de
+clignotement d'une LED sur la carte NanoPi. L'application doit permettre grâce
+aux systèmes de fichiers et en passant par les boutons de la board de régler la
+fréquence de la LED. Un programme de base (silly\_led\_control.c) est fourni
+mais celui-ci consomme l'entièreté d'un coeur du processeur. Il nous est donc
+demandé de développer un programme qui utilise les systèmes de fichiers pour
+contrôler la LED ainsi que les boutons et qui fonctionnerait de manière plus optimisée.
 
 \section{Infos utiles à retenir}
-
+Pour obtenir le numéro de GPIO correspondant à une pin, il faut lire la
+configuration à l'aide de la commande :
+\begin{minted}{shell}
+    mount -t debugfs none /sys/kernel/debug
+    cat /sys/kernel/debug/gpio
+\end{minted}
 \section{Feedback global}
-
+Nous avons dû retrouver dans un ancien TP les numéros de pin des boutons de la
+carte car en utilisant les commandes de la section précédente, si ceux-ci ne
+sont pas activés cela ne les affiche pas.
 
 \chapter{TP 5}
 \section{Résumé du laboratoire}

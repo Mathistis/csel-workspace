@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    mount \PYGZhy{}t debugfs none /sys/kernel/debug
+    cat /sys/kernel/debug/gpio
+\end{Verbatim}

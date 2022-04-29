@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    mknod /dev/mymodule c \PYG{l+m}{511} \PYG{l+m}{0}
+\end{Verbatim}

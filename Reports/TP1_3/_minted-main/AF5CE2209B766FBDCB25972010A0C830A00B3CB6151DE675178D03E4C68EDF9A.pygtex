@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    make u\PYGZhy{}boot \PYG{c+c1}{\PYGZsh{} ou}
+    make u\PYGZhy{}boot\PYGZhy{}rebuild
+\end{Verbatim}

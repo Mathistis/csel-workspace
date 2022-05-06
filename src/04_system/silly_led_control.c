@@ -51,12 +51,16 @@
 #define PIN_K2 "2"
 #define PIN_K3 "3"
 #define PIN_NBR 3 // Nbr of btn to open
-#define ACK_READ_SIZE 8
+#define ACK_READ_SIZE 20
 
 #define TIM_FUNC 0x01
 #define RST_FREQ 0x10 // Attribute functionnality to a button
 #define DEC_FREQ 0x11 //  "
 #define INC_FREQ 0x12 //  "
+#define INCREMENT_NS    100000000
+#define BILLION     1000000000
+#define MIN_FREQ_NS 100000000
+#define MAX_TIME_SEC 4
 
 
 struct pin
@@ -68,13 +72,6 @@ struct pin
     char *edge;
     int functionnality;
 };
-// struct pin
-// {
-//     char *k_pin[PIN_NBR];
-//     char *k_gpio_direction[PIN_NBR];
-//     char *k_gpio_value[PIN_NBR];
-//     int   functionnality[PIN_NBR];
-// };
 
 struct custom_event_data {
     int fd;
@@ -148,15 +145,19 @@ static int open_btn(struct pin * pin, struct k_fd* opened_fd, int len)
         opened_fd[i].fd = open(pin[i].k_gpio_value, O_RDWR);
         if(opened_fd[i].fd < 0) return -1;
         char buff[ACK_READ_SIZE] = ""; // prepare buffre to read fd that interrupt (acknowledge)
-        read(opened_fd[i].fd, buff, ACK_READ_SIZE);
-        opened_fd[i].events.events = EPOLLIN;
+        pread(opened_fd[i].fd, buff, ACK_READ_SIZE, 0);
+        opened_fd[i].events.events = EPOLLERR;
         opened_fd[i].events.data.ptr = &opened_fd[i].data;
         opened_fd[i].data.fd = opened_fd[i].fd;
         opened_fd[i].data.functionnality = pin[i].functionnality;
     }
     return 1;
 }
-
+void print_time(int sec, int ns){
+    
+    printf("[Interval]:%ds, %dns\n", sec, ns);
+    
+}
 int main()
 {
     int err = 0;
@@ -201,23 +202,23 @@ int main()
     if (timerfd == -1)
         printf("timer_create() = -1\n");
 
-    struct timespec time_spec = {
+    struct timespec delault_spec = {
         0,         /* Seconds */
         500000000, /* Nanoseconds */
     };
 
     const struct itimerspec my_interval =
         {
-            time_spec,
-            time_spec,
+            delault_spec,
+            delault_spec,
         };
         
     err = timerfd_settime(timerfd, 0, &my_interval, NULL);
     if (err < 0)
-        printf("timerfd_settime() = -1\n");
+        printf("[Timers] timerfd_settime() = -1\n");
     int epfd = epoll_create1(0);
     if (epfd < 0)
-        printf("epoll_create1() = -1\n");
+        printf("[Epoll] epoll_create1() = -1\n");
 
     struct custom_event_data timer_data = {
         .fd = timerfd,
@@ -234,20 +235,19 @@ int main()
     for (int i = 0; i < PIN_NBR; i++)
     {
         printf("%d\n", btn_fd[i].fd);
-        err |= epoll_ctl(epfd, EPOLL_CTL_ADD, btn_fd[i].fd, &btn_fd[i].events);
-    }
-    if (err < 0)
-    {
-        printf("[Buttons] epoll_ctl() = -1\n");
-        return -1;
+        err = epoll_ctl(epfd, EPOLL_CTL_ADD, btn_fd[i].fd, &btn_fd[i].events);
+        if (err < 0)
+        {
+            printf("[Buttons] epoll_ctl() = -1\n");
+            return -1;
+        }
     }
 
     struct epoll_event list_events[10];
     int nbr_events = 0;
     int k = 0;
     char buff[ACK_READ_SIZE] = ""; // prepare buffre to read fd that interrupt (acknowledge)
-    int j = 3;
-    while (j--)
+    while (1)
     {
         nbr_events = epoll_wait(epfd, list_events, 10, -1);
         if(nbr_events <0) { 
@@ -257,34 +257,83 @@ int main()
         for (int i = 0; i < nbr_events; i++)
         {
             struct custom_event_data* data = list_events[i].data.ptr;
-            printf("fd : %d\n",data->fd);
-            int len = read(data->fd, buff, ACK_READ_SIZE); // acknowledge the fd anyway what it is. Is this wrong ?
-            printf("len: %d\n", len);
+            int len = 0;
+            struct itimerspec interval;
+            struct timespec* newsPec;
+
             switch(data->functionnality){
                 case TIM_FUNC:
+                    len = read(data->fd, buff, ACK_READ_SIZE-1);
                     k = (k + 1) % 2;
                     if (k == 0)
                     {
                         pwrite(led, "1", sizeof("1"), 0);
-                        printf("turning on\n");
+                        // printf("turning on\n");
                     }
                     else
                     {
                         pwrite(led, "0", sizeof("0"), 0);
-                        printf("turning off\n");
+                        // printf("turning off\n");
                     }
                     break;
                 case INC_FREQ:
+                    len = pread(data->fd, buff, ACK_READ_SIZE, 0);
                     printf("BTN_FREQ_INQ\n");
+                    timerfd_gettime(timerfd, &interval);
+                    newsPec = &(interval.it_interval);
+                    newsPec->tv_nsec = newsPec->tv_nsec - INCREMENT_NS;
+                    if (newsPec->tv_nsec <= MIN_FREQ_NS){
+                        newsPec->tv_sec--;
+                        if (newsPec->tv_sec < 0){
+                            newsPec->tv_sec = 0;
+                            newsPec->tv_nsec = MIN_FREQ_NS;
+                        }
+                    }
+                    err = timerfd_settime(timerfd, 0, &interval, NULL);
+                    if(err < 0){
+                        printf("[Buttons] Can't increment interval: %d\n", err);
+                    }
+                    print_time(newsPec->tv_sec, newsPec->tv_nsec);
                     break;
                 case DEC_FREQ:
+                    len = pread(data->fd, buff, ACK_READ_SIZE, 0);
                     printf("BTN_FREQ_DEC\n");
+                    
+                    
+                    timerfd_gettime(timerfd, &interval);
+                    newsPec = &(interval.it_interval);
+                    
+                    if(newsPec->tv_nsec < INT32_MAX - INCREMENT_NS){
+                        newsPec->tv_nsec = newsPec->tv_nsec + INCREMENT_NS;
+                        
+                        if (newsPec->tv_nsec >= BILLION){
+                            newsPec->tv_sec++;
+                            if(newsPec->tv_sec > MAX_TIME_SEC){
+                                newsPec->tv_sec = MAX_TIME_SEC;
+                                newsPec->tv_nsec -= INCREMENT_NS;
+                            }else{
+                                newsPec->tv_nsec -= BILLION;
+                            }
+                        }
+                    }
+                    err = timerfd_settime(timerfd, 0, &interval, NULL);
+                    if(err < 0){
+                        printf("[Buttons] Can't increment interval: %d\n", err);
+                    }
+                    print_time(newsPec->tv_sec, newsPec->tv_nsec);
                     break;
                 case RST_FREQ:
+                    len = pread(data->fd, buff, ACK_READ_SIZE, 0);
                     printf("BTN_FREQ_RST\n");
+                    
+                    err = timerfd_settime(timerfd, 0, &my_interval, NULL);
+                    if(err < 0){
+                        printf("[Buttons] Can't increment interval: %d\n", err);
+                    }
+                    print_time(my_interval.it_interval.tv_sec, my_interval.it_interval.tv_nsec);
                     break;
                 default:
-                    printf("WTF ?! Unknow functionnality ... ?! \n");
+                    printf("Unknow functionnality ... ?! \n");
 
             }
         }

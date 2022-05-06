@@ -44,6 +44,12 @@ configuration à l'aide de la commande :
     mount -t debugfs none /sys/kernel/debug
     cat /sys/kernel/debug/gpio
 \end{minted}
+Afin d'utiliser des event produits par les gpio associés aux boutons, il est
+nécessaire d'utiliser \textit{EPOLLERR} car en utilisant \textit{EPOLLIN} cela
+ne fonctionne pas. Nous n'avons pas réellement trouvé la raison de ceci et
+suspectons un bug dans le kernel. %TODO: Expliquer mieux
+Pour les boutons, au moment du open sur le fd, il faut faire un pread pour
+quittancer l'interruption alors que pour le timer le read suffit.
 \section{Feedback global}
 Nous avons dû retrouver dans un ancien TP les numéros de pin des boutons de la
 carte car en utilisant les commandes de la section précédente, si ceux-ci ne

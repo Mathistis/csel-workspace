@@ -57,9 +57,23 @@ sont pas activés cela ne les affiche pas.
 
 \chapter{TP 5}
 \section{Résumé du laboratoire}
-
+Le but de ce laboratoire est de mettre en pratique la théorie vue dans le cours
+en ce qui concerne le multiprocessing ainsi que les ordonnanceurs. Il se compose
+de deux exercices, un sur les processus et signaux de communication et l'autre
+sur l'utilisation des CGroups. Les réponses aux questions ainsi que les
+difficultés rencontrées ou information utiles à retenir seront détaillés dans
+plus loin dans ce document.
 
 \section{Réponses aux questions}
+\subsection{Quel effet a la commande echo \$\$ > ... sur les cgroups ?}
+L'utilisation des caractères \textit{\$\$} permet d'obtenir le PID du processus
+actuel et donc dans notre cas du shell duquel sera lancé le processus. Cette
+commande permet donc de définir les limites de ressources que pourra utiliser
+notre processus. Il est utile de préciser que tout processus enfant du shell
+(correspondant au PID \$\$) auront les mêmes limites.
+\subsection{Quel est le comportement du sous-système memory lorsque le quota de mémoire est épuisé ? Pourrait-on le modifier ? Si oui, comment ?}
+
+\subsection{Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}
 
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
@@ -69,7 +83,21 @@ sont pas activés cela ne les affiche pas.
 \subsection{Parfaitement acquis}
 
 \section{Feedback exercices}
+\subsection{Exercice 2}
+Il a été observé que si l'on lance le programme et que l'on essaie de limiter le
+nombre de bytes possibles alors qu'il a déjà atteint le quota, l'écriture est
+bloquée et la limite ne peut être fixée. Cependant si l'on écrit la limite avant
+que le programme ne l'ait atteinte, elle sera bien fixée et le programme
+s'arrêtera lorsqu'il atteindra cette limite.\newline
+Commande pour limiter la quantité max de mémoire :
+\begin{minted}[linenos=false]{shell}
+echo 20M > /sys/fs/cgroup/set/program/memory.limit_in_bytes
+\end{minted}
 
+Nous avons également pu observer que si l'on crée deux cgroup de limitation de
+mémoire, un de 20M et l'autre de 30M. Si l'on ajoute notre PID dans celui de 20M
+puis dans celui de 30M, au moment de l'ajout dans celui de 30M il est
+automatiquement retiré des tasks du cgroup qui limitait à 20M.
 
 \chapter{TP 6}
 \section{Résumé du laboratoire}

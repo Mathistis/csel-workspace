@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k+kt}{cpu\PYGZus{}set\PYGZus{}t}\PYG{+w}{ }\PYG{n}{set}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{CPU\PYGZus{}ZERO}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{set}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{CPU\PYGZus{}SET}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{set}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{// set to the core 1}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{ret}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sched\PYGZus{}setaffinity}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{set}\PYG{p}{),}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{set}\PYG{p}{);}
+\end{Verbatim}

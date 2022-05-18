@@ -72,8 +72,31 @@ commande permet donc de définir les limites de ressources que pourra utiliser
 notre processus. Il est utile de préciser que tout processus enfant du shell
 (correspondant au PID \$\$) auront les mêmes limites.
 \subsection{Quel est le comportement du sous-système memory lorsque le quota de mémoire est épuisé ? Pourrait-on le modifier ? Si oui, comment ?}
+<<<<<<< HEAD
 
 \subsection{Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}
+=======
+See
+\href{https://www.kernel.org/doc/Documentation/cgroup-v1/memory.txt}{Doumentation
+on cgroups about memory - 2.5 Reclaim}.\newline
+Selon la documentation, chaque cgroup maintient une LRU (Least Recently used)
+pour sa mémoire. Lorsque la limite est atteinte, il essaie d'abord de récupérer
+une mémoire potentiellement disponible mais dans le cas contraire il invoque la
+routine OOM (Out Of Memory, voir doc 10. OOM Control). La routine OOM implemente
+un notifier utilisant l'api de notifications du cgroup. Il permet d'enregistrer
+des notifications de dépassement de mémoire. Le OOM-Killer se charge quant à lui
+de stopper les tâches ayant dépassé leur limite en attendant qu'elles en aient à
+nouveau.\newline
+Lorsque la limite est attente le sous-système ne permet plus d'allocation et
+retourne un pointeur vide à chaque essai d'allocation.
+\subsection{Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}
+
+\subsection{Les 4 dernières lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}
+
+\subsection{Comportement des shells dans deux cgroups différents}
+
+\subsection{Sachant que l’attribut cpu.shares permet de répartir le temps CPU entre différents cgroups, comment devrait-on procéder pour lancer deux tâches distinctes sur le cœur 6 de notre processeur et attribuer 75\% du temps CPU à la première tâche et 25\% à la deuxième ?}
+>>>>>>> 2c76b43b08afcb6ce1dd9a4b6f6cf577ebe27672
 
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
@@ -82,7 +105,62 @@ notre processus. Il est utile de préciser que tout processus enfant du shell
 
 \subsection{Parfaitement acquis}
 
+\section{Infos utiles à retenir}
+La fonction c \textit{strcmp} retourne la valeur 0 quand les deux chaînes de
+caractères sont identiques. Nous nous sommes faits avoir par ceci et avons perdu
+passablement de temps à chercher une erreur alors qu'elle se trouvait simplement
+à cet endroit.\newline
+Lors de la capture des signaux, si l'on capture un signal alors que le processus
+était en \textit{sleep}, à la fin du traitement de la capture le signal sera
+réveillé car en effet cela reprend l'exécution du processus là ou il en était
+mais dans le cas d'un sleep ne vérifie pas que celui-ci soit terminé. Si l'on
+voulait s'assurer que le temps du sleep soit bien respecté il faudrait utiliser
+le fait que la fonction sleep lorsqu'elle est interrompue retourne le nombre de
+secondes restantes à son exécution. On pourrait donc comparer à la suite de
+l'instruction sleep si le temps restant est de 0 ou non et dans le cas contraire
+replonger le processus en sommeil pour la durée de temps restante. De plus, dans
+le cas d'un besoin de précision il est conseillé d'utiliser
+
+\textit{clock\_nanosleep} au lieu de \textit{sleep}.
+
 \section{Feedback exercices}
+<<<<<<< HEAD
+=======
+\subsection{Exercice 1}
+Nous avons réalisé cet exercice en utilisant un \textit{socketpair} afin de
+communiquer entre deux processus. Le processus parent envoie via le socket des
+messages au processus enfant qui les affiche dans la console. Le processus
+enfant "répond" en affichant simplement dans la console car nous n'avons pas eu
+le temps de développer le fait qu'il renvoie un message dans le socketpair. Une
+fois le message correspondant à l'ordre de quitter reçu, le processus enfant se
+termine. Dans le main, le processus parent attend grace à la fonction
+\textit{wait} la fin du processus enfant.\newline
+L'étape suivante consistait à capturer et ignorer tous les signaux (sauf le 9
+SIGSTOP et le 19 SIGKILL) et juste afficher un message à la réception d'un
+signal. Nous avons suivi la procédure du cours ainsi que quelques recherches et
+donc parcouru une boucle de 30 (correspondant aux 30 signaux p. 8 du cours) afin
+de tous leur affecter une \textit{sigaction} permettant de les ignorer.\newline
+La dernière partie consistait à dispatcher les deux processus sur deux coeurs
+différents du nanopi. Pour ce faire nous avons utilisé les fonctions suivantes :
+\begin{minted}[linenos=false]{c}
+    cpu_set_t set;
+    CPU_ZERO(&set);
+    CPU_SET(1, &set); // set to the core 1
+    int ret = sched_setaffinity(0, sizeof(set), &set);
+\end{minted}
+Et ceci pour les deux processus. Notre application étant très rapidement
+exécutée et afin de vérifier le bon fonctionnement de ceci, nous avons ajouté
+dans le code une boucle \textit{while} d'un grand nombre d'itérations effectuant
+une multiplication et un print afin de visualiser à l'aide de \textit{htop}
+l'utilisation des coeurs comme le montre la figure suivante :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/MultiCPU.png.png}
+    \caption{Multi Core usage}
+    \label{fig:MultiCore}
+\end{figure}
+\newpage
+>>>>>>> 2c76b43b08afcb6ce1dd9a4b6f6cf577ebe27672
 \subsection{Exercice 2}
 Il a été observé que si l'on lance le programme et que l'on essaie de limiter le
 nombre de bytes possibles alors qu'il a déjà atteint le quota, l'écriture est
@@ -93,6 +171,22 @@ Commande pour limiter la quantité max de mémoire :
 \begin{minted}[linenos=false]{shell}
 echo 20M > /sys/fs/cgroup/set/program/memory.limit_in_bytes
 \end{minted}
+<<<<<<< HEAD
+=======
+
+Nous avons également pu observer que si l'on crée deux cgroup de limitation de
+mémoire, un de 20M et l'autre de 30M. Si l'on ajoute notre PID dans celui de 20M
+puis dans celui de 30M, au moment de l'ajout dans celui de 30M il est
+automatiquement retiré des tasks du cgroup qui limitait à 20M.\newline
+
+Nous avons créé un script pour limiter la mémoire et celui-ci se lance de la
+manière suivante : 
+\begin{minted}[linenos=false]{shell}
+    ./set_memory_limit <PID> <MEMORY_LIMIT>
+\end{minted}
+
+\subsection{Exercice 3}
+>>>>>>> 2c76b43b08afcb6ce1dd9a4b6f6cf577ebe27672
 
 Nous avons également pu observer que si l'on crée deux cgroup de limitation de
 mémoire, un de 20M et l'autre de 30M. Si l'on ajoute notre PID dans celui de 20M

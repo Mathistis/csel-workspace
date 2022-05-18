@@ -14,6 +14,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.2}Réponses aux questions}{2}{section.2.2}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Quel effet a la commande echo \$\$ > ... sur les cgroups ?}{2}{subsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Quel est le comportement du sous-système memory lorsque le quota de mémoire est épuisé ? Pourrait-on le modifier ? Si oui, comment ?}{2}{subsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.3}Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}{2}{subsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Synthèse des connaissances acquises}{2}{section.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Non acquis}{2}{subsection.2.3.1}%
@@ -23,6 +29,8 @@
 \contentsline {subsection}{\numberline {2.3.3}Parfaitement acquis}{2}{subsection.2.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}Feedback exercices}{2}{section.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.1}Exercice 2}{2}{subsection.2.4.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}TP 6}{3}{chapter.3}%
 \defcounter {refsection}{0}\relax 

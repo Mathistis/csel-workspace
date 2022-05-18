@@ -5,15 +5,19 @@
 \BOOKMARK [0][-]{chapter.2}{TP 5}{}% 5
 \BOOKMARK [1][-]{section.2.1}{R\351sum\351 du laboratoire}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{R\351ponses aux questions}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.3}{Synth\350se des connaissances acquises}{chapter.2}% 8
-\BOOKMARK [2][-]{subsection.2.3.1}{Non acquis}{section.2.3}% 9
-\BOOKMARK [2][-]{subsection.2.3.2}{Acquis, mais \340 exercer}{section.2.3}% 10
-\BOOKMARK [2][-]{subsection.2.3.3}{Parfaitement acquis}{section.2.3}% 11
-\BOOKMARK [1][-]{section.2.4}{Feedback exercices}{chapter.2}% 12
-\BOOKMARK [0][-]{chapter.3}{TP 6}{}% 13
-\BOOKMARK [1][-]{section.3.1}{R\351sum\351 du laboratoire}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.2}{Synth\350se des connaissances acquises}{chapter.3}% 15
-\BOOKMARK [2][-]{subsection.3.2.1}{Non acquis}{section.3.2}% 16
-\BOOKMARK [2][-]{subsection.3.2.2}{Acquis, mais \340 exercer}{section.3.2}% 17
-\BOOKMARK [2][-]{subsection.3.2.3}{Parfaitement acquis}{section.3.2}% 18
-\BOOKMARK [1][-]{section.3.3}{Feedback}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.2.2.1}{Quel effet a la commande echo \044\044 > ... sur les cgroups ?}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.2}{Quel est le comportement du sous-syst\350me memory lorsque le quota de m\351moire est \351puis\351 ? Pourrait-on le modifier ? Si oui, comment ?}{section.2.2}% 9
+\BOOKMARK [2][-]{subsection.2.2.3}{Est-il possible de surveiller/v\351rifier l\220\351tat actuel de la m\351moire ? Si oui, comment ?}{section.2.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Synth\350se des connaissances acquises}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.3.1}{Non acquis}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.2}{Acquis, mais \340 exercer}{section.2.3}% 13
+\BOOKMARK [2][-]{subsection.2.3.3}{Parfaitement acquis}{section.2.3}% 14
+\BOOKMARK [1][-]{section.2.4}{Feedback exercices}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.4.1}{Exercice 2}{section.2.4}% 16
+\BOOKMARK [0][-]{chapter.3}{TP 6}{}% 17
+\BOOKMARK [1][-]{section.3.1}{R\351sum\351 du laboratoire}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.2}{Synth\350se des connaissances acquises}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.2.1}{Non acquis}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.2}{Acquis, mais \340 exercer}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.3}{Parfaitement acquis}{section.3.2}% 22
+\BOOKMARK [1][-]{section.3.3}{Feedback}{chapter.3}% 23

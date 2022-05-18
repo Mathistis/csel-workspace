@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  13 MAY 2022 16:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  18 MAY 2022 17:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1207,7 +1207,7 @@ Package biblatex Info: ... file 'main.bbl' found.
 Package biblatex Info: Reference section=0 on input line 12.
 Package biblatex Info: Reference segment=0 on input line 12.
  ABD: EveryShipout initializing macros
-<imageSources/LogoHESSO.png, id=126, 530.98375pt x 319.1925pt>
+<imageSources/LogoHESSO.png, id=150, 530.98375pt x 319.1925pt>
 File: imageSources/LogoHESSO.png Graphic file (type png)
 <use imageSources/LogoHESSO.png>
 Package pdftex.def Info: imageSources/LogoHESSO.png  used on input line 14.
@@ -1263,7 +1263,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-<imageSources/LogoMSE.png, id=165, 507.8975pt x 73.27374pt>
+<imageSources/LogoMSE.png, id=201, 507.8975pt x 73.27374pt>
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
 Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 58.
@@ -1284,51 +1284,83 @@ l.58 \chapter
 
  <./imageSources/LogoMSE.png>]
 Chapter 2.
-\openout3 = `main.pyg'.
-
-(./_minted-main/9D01C3E3919F2E5764E149D7989B0B26A00B3CB6151DE675178D03E4C68EDF9A.pygtex)
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
-Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 102.
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 118.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
- [2
+[2
 
 ]
+\openout3 = `main.pyg'.
+
+File: imageSources/LogoMSE.png Graphic file (type png)
+<use imageSources/LogoMSE.png>
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 143.
+(pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
+ [3] (./_minted-main/3DDDE9959D9CED82A783CD14DFB0680A042D2615758B6C3F03C186B02CFC62B2.pygtex
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2.
+)
+<imageSources/MultiCPU.png.png, id=217, 544.0325pt x 218.8175pt>
+File: imageSources/MultiCPU.png.png Graphic file (type png)
+<use imageSources/MultiCPU.png.png>
+Package pdftex.def Info: imageSources/MultiCPU.png.png  used on input line 151.
+(pdftex.def)             Requested size: 280.08063pt x 112.6572pt.
+File: imageSources/LogoMSE.png Graphic file (type png)
+<use imageSources/LogoMSE.png>
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 155.
+(pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
+ [4 <./imageSources/MultiCPU.png.png (PNG copy)>]
+\openout3 = `main.pyg'.
+
+ (./_minted-main/9D01C3E3919F2E5764E149D7989B0B26A00B3CB6151DE675178D03E4C68EDF9A.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 167--171
+
+ []
+
+\openout3 = `main.pyg'.
+
+(./_minted-main/71DE72075C95E6EC8D5D3845E49711F7A00B3CB6151DE675178D03E4C68EDF9A.pygtex)
+File: imageSources/LogoMSE.png Graphic file (type png)
+<use imageSources/LogoMSE.png>
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 181.
+(pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
+ [5]
 Chapter 3.
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
-Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 114.
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 193.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
-[3
+[6
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 193.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 193.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 193.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 193.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DAFCF9B29C4F60645AE2F6264EE549D7;1818.
+(rerunfilecheck)             Checksum: 3BFCA8F2FBD2B4C3FF143111AA870DA9;2673.
 runsystem(rm main.pyg)...executed.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 114.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 193.
  ) 
 Here is how much of TeX's memory you used:
- 38050 strings out of 481239
- 735669 string characters out of 5920378
- 1536349 words of memory out of 5000000
- 52568 multiletter control sequences out of 15000+600000
+ 38108 strings out of 481239
+ 737441 string characters out of 5920378
+ 1538544 words of memory out of 5000000
+ 52609 multiletter control sequences out of 15000+600000
  566988 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  81i,16n,96p,1281b,789s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (5 pages, 137164 bytes).
+Output written on main.pdf (8 pages, 179657 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 303 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 262 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 356 words of extra memory for PDF output out of 10000 (max. 10000000)
 

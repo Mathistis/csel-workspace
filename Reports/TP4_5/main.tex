@@ -165,6 +165,21 @@ Nous avons gardé les deux cgroup de la question précédente (Low et High) mais
 cette fois affecté le coeur 4 aux deux tâches. Nous avons ensuite défini à
 l'aide de l'attribut cpu.shares que le premier groupe (High) peut occuper 75\% du temps
 du coeur et le deuxième (Low) uniquement 25\%.
+Pour ce faire nous avons trouvé dans la documentation que la valeur 1024 dans
+cpu.shares correspondait au 100\% du coeur nous avons donc mis 768 dans cet
+attribut pour le High cgroup et 256 pour le Low. On peut voir sur la figure
+suivante que le coeur 4 est occupé à 100\% par 4 processus (deux pour chaque
+tâche), et que pour la tâche appartenant au groupe 1, les processus utilisent
+environ 37.5\% chacun alors que pour la tâche appartenant au groupe 2, les
+processus utilisent environ 12.5\% de du coeur. Ainsi on peut voir que la tâche
+1 (appartenant au groupe High) utilise bien 75\% du coeur et la tâche 2
+(appartenant au groupe Low) utilise bien 25\%.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/75x25Use.png}
+    \caption{75\% and 25\% of the CPU on core 4}
+    \label{fig:LowHighGroup2}
+\end{figure}
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 

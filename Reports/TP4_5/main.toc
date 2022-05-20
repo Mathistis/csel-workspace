@@ -26,34 +26,34 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.6}Sachant que l’attribut cpu.shares permet de répartir le temps CPU entre différents cgroups, comment devrait-on procéder pour lancer deux tâches distinctes sur le cœur 4 de notre processeur et attribuer 75\% du temps CPU à la première tâche et 25\% à la deuxième ?}{4}{subsection.2.2.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Synthèse des connaissances acquises}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Synthèse des connaissances acquises}{5}{section.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Non acquis}{4}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.1}Non acquis}{5}{subsection.2.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Acquis, mais à exercer}{4}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}Acquis, mais à exercer}{5}{subsection.2.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}Parfaitement acquis}{4}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.3}Parfaitement acquis}{5}{subsection.2.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Infos utiles à retenir}{4}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Infos utiles à retenir}{5}{section.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Feedback exercices}{4}{section.2.5}%
+\contentsline {section}{\numberline {2.5}Feedback exercices}{5}{section.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.1}Exercice 1}{4}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.1}Exercice 1}{5}{subsection.2.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.2}Exercice 2}{6}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.2}Exercice 2}{7}{subsection.2.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5.3}Exercice 3}{6}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.3}Exercice 3}{7}{subsection.2.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}TP 6}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {3}TP 6}{8}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Résumé du laboratoire}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.1}Résumé du laboratoire}{8}{section.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Synthèse des connaissances acquises}{7}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Synthèse des connaissances acquises}{8}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Non acquis}{7}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Non acquis}{8}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Acquis, mais à exercer}{7}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Acquis, mais à exercer}{8}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Parfaitement acquis}{7}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Parfaitement acquis}{8}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Feedback}{7}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Feedback}{8}{section.3.3}%

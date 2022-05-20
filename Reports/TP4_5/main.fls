@@ -487,7 +487,6 @@ INPUT _minted-main/D56D6F8A33727422C6EF3C5EB1466E23A00B3CB6151DE675178D03E4C68ED
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr9e.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplri9e.tfm
 INPUT imageSources/LogoMSE.png
 INPUT ./imageSources/LogoMSE.png
@@ -495,13 +494,16 @@ INPUT ./imageSources/LogoMSE.png
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplb9e.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmb.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplr9e.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplri9e.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb9e.tfm
+OUTPUT main.pyg
+INPUT ./main.pyg
+INPUT _minted-main/BADA84EC3F74052BBFEDA83D58886B38A00B3CB6151DE675178D03E4C68EDF9A.pygtex
+INPUT _minted-main/BADA84EC3F74052BBFEDA83D58886B38A00B3CB6151DE675178D03E4C68EDF9A.pygtex
+INPUT _minted-main/BADA84EC3F74052BBFEDA83D58886B38A00B3CB6151DE675178D03E4C68EDF9A.pygtex
+INPUT _minted-main/BADA84EC3F74052BBFEDA83D58886B38A00B3CB6151DE675178D03E4C68EDF9A.pygtex
 INPUT imageSources/LogoMSE.png
 INPUT ./imageSources/LogoMSE.png
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplb9e.vf

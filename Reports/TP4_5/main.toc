@@ -18,7 +18,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.2}Quel est le comportement du sous-système memory lorsque le quota de mémoire est épuisé ? Pourrait-on le modifier ? Si oui, comment ?}{2}{subsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.3}Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}{3}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.3}Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}{2}{subsection.2.2.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.4}Les 4 dernières lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}{3}{subsection.2.2.4}%
 \defcounter {refsection}{0}\relax 

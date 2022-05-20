@@ -40,7 +40,7 @@ contrôler la LED ainsi que les boutons et qui fonctionnerait de manière plus o
 \section{Infos utiles à retenir}
 Pour obtenir le numéro de GPIO correspondant à une pin, il faut lire la
 configuration à l'aide de la commande :
-\begin{minted}{shell}
+\begin{minted}[linenos=false]{shell}
     mount -t debugfs none /sys/kernel/debug
     cat /sys/kernel/debug/gpio
 \end{minted}
@@ -86,7 +86,16 @@ nouveau.\newline
 Lorsque la limite est attente le sous-système ne permet plus d'allocation et
 retourne un pointeur vide à chaque essai d'allocation.
 \subsection{Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}
-
+Il est possible de surveiller l'état de la mémoire à l'aide de commandes telles
+que \textit{top} ou \textit{htop}. Ces commandes peuvent être utilisées sans
+arguments si l'on souhaite surveiller l'état global de la mémoire et des
+ressources. Cependant, si l'on veut surveiller un processus en particulier, on
+peut utiliser celles-ci de la manière suivante:
+\begin{minted}[linenos=false]{shell}
+top -p <PID>
+\end{minted}
+Il existe plusieurs outils de ce type pour surveiller l'état de la mémoire et
+des ressources. Une liste de certains d'entre eux est disponible \href{https://geekflare.com/fr/process-cpu-memory-monitoring/}{ici}.
 \subsection{Les 4 dernières lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}
 
 \subsection{Comportement des shells dans deux cgroups différents}

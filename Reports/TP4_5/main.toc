@@ -20,13 +20,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2.3}Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}{2}{subsection.2.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}Est-il possible de surveiller/vérifier l’état actuel de la mémoire ? Si oui, comment ?}{2}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.4}Les 4 dernières lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}{3}{subsection.2.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.5}Les 4 dernières lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}{3}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.5}Comportement des shells dans deux cgroups différents}{3}{subsection.2.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.6}Comportement des shells dans deux cgroups différents}{3}{subsection.2.2.6}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.7}Sachant que l’attribut cpu.shares permet de répartir le temps CPU entre différents cgroups, comment devrait-on procéder pour lancer deux tâches distinctes sur le cœur 6 de notre processeur et attribuer 75\% du temps CPU à la première tâche et 25\% à la deuxième ?}{3}{subsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.2.6}Sachant que l’attribut cpu.shares permet de répartir le temps CPU entre différents cgroups, comment devrait-on procéder pour lancer deux tâches distinctes sur le cœur 6 de notre processeur et attribuer 75\% du temps CPU à la première tâche et 25\% à la deuxième ?}{3}{subsection.2.2.6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Synthèse des connaissances acquises}{3}{section.2.3}%
 \defcounter {refsection}{0}\relax 

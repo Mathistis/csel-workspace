@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    cat /proc/\PYGZlt{}PID\PYGZgt{}/status // status
+    cat /proc/\PYGZlt{}PID\PYGZgt{}/statm // stat
+\end{Verbatim}

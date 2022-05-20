@@ -1,0 +1,4 @@
+mount -t tmpfs none /sys/fs/cgroup
+mkdir /sys/fs/cgroup/memory
+mount -t cgroup -o memory memory /sys/fs/cgroup/memory
+mkdir /sys/fs/cgroup/memory/mem 2>/dev/null

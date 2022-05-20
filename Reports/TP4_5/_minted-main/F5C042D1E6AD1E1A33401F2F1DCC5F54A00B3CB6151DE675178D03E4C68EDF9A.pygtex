@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-cat /proc/\PYGZlt{}PID\PYGZgt{}/maps // or smaps
-\end{Verbatim}

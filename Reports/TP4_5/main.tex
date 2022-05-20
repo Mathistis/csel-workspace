@@ -41,8 +41,8 @@ contrôler la LED ainsi que les boutons et qui fonctionnerait de manière plus o
 Pour obtenir le numéro de GPIO correspondant à une pin, il faut lire la
 configuration à l'aide de la commande :
 \begin{minted}[linenos=false]{shell}
-    mount -t debugfs none /sys/kernel/debug
-    cat /sys/kernel/debug/gpio
+mount -t debugfs none /sys/kernel/debug
+cat /sys/kernel/debug/gpio
 \end{minted}
 Afin d'utiliser des event produits par les gpio associés aux boutons, il est
 nécessaire d'utiliser \textit{EPOLLERR} car en utilisant \textit{EPOLLIN} cela
@@ -102,19 +102,69 @@ Il est également possible de surveiller ceci en utilisant les fichiers de
 (\href{https://man7.org/linux/man-pages/man5/proc.5.html}{doc proc}).
 On peut optenir l'espace d'adressage avec la commande :
 \begin{minted}[linenos=false]{shell}
-cat /proc/<PID>/maps // or smaps
+cat /proc/<PID>/maps # or smaps
 \end{minted}
 On peut également obtenir les stats et le status avec les commandes :
 \begin{minted}[linenos=false]{shell}
-    cat /proc/<PID>/status // status
-    cat /proc/<PID>/statm // stat
-    \end{minted}
+cat /proc/<PID>/status # status
+cat /proc/<PID>/statm # stat
+\end{minted}
+Ces méthodes ne font cependant pas appel aux cgroups. Si l'on souhaite
+surveiller nos ressources en utilisant les cgroups à l'aide du \textit{CPU
+Accounting Controller}. Il peut être créé de la manière suivante:
+\begin{minted}[linenos=false]{shell}
+mount -t cgroup -ocpuacct none /sys/fs/cgroup
+cd /sys/fs/cgroup
+mkdir g1 #group name can be changed 
+echo $$ > g1/tasks #add current process to group
+\end{minted}
+On peut utiliser \textit{/sys/fs/cgroup/g1/cpuacct.usage} pour obtenir les temps
+CPU (en nanosecondes) obtenus par ce groupe.
+\textit{/sys/fs/cgroup/g1/cpuacct.stat} liste quelques statistiques comme par
+exemple:
+\begin{itemize}
+    \item user : le temps passé par les tâches du cgroup en user mode.
+    \item system : Le temps passé par les tâches du cgroup en mode kernel.
+\end{itemize}
+Plus d'informations sur ce type de cgroup sont disponibles
+\href{https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/cpuacct.html}{ici}.
+\newline
+Il existe aussi des memory controllers comme ceux utilisés pour la limitation de
+mémoire. Il existe des moyens de controller l'usage de mémoire avec le cgroup
+memory.usage\_in\_bytes. Des possibilités comme memory.failcnt ou stat
+permettent d'obtenir des informations comme le nombre de fois que la limite de
+mémoire a été atteinte ou d'afficher diverses statistiques.
+(\href{https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v1/memory.html}{cgroup
+memory}).
 \subsection{Les 4 dernières lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}
-
+Les lignes 1 et 3 servent à définir le cpu sur lequel chacun des cgroups pourra
+exécuter ses tâches. Les deux autres écrivant 0 dans cpuset.mems servent à
+définir le noeud mémoire que va utiliser le cgroup. Ceci est souvent utilisé sur
+les systèmes à architecture NUMA (Non Uniform Memory Access) signifiant que le
+système peut contenir plusieurs types de mémoires différents symbolisés par des
+noeuds. Dans le cas du Nanopi nous n'avons qu'une seule mémoire et donc la
+documentation préconise d'inscrire 0 dans cpuset.mems pour les systèmes n'ayant
+pas de NUMA. (Info trouvée \href{https://docs.oracle.com/cd/E37670_01/E37355/html/ol_cpuset_cgroups.html#:~:text=mems%20changes.,the%20node%20list%20where%20possible.}{ici}). 
 \subsection{Comportement des shells dans deux cgroups différents}
-
-\subsection{Sachant que l’attribut cpu.shares permet de répartir le temps CPU entre différents cgroups, comment devrait-on procéder pour lancer deux tâches distinctes sur le cœur 6 de notre processeur et attribuer 75\% du temps CPU à la première tâche et 25\% à la deuxième ?}
-
+On observe que chaque application utilise le 100\% du coeur qui lui est affecté.
+Les deux processus à l'intérieur de chaque application doivent par conséquent se
+partager le coeur pour leur exécution. On peut observer ceci sur la figure
+suivante:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/LowHigh_Groups.png}
+    \caption{Two different shells executing app}
+    \label{fig:LowHighGroup}
+\end{figure}
+On observe ici que la barre d'utilisation des coeurs 2 et 3 est à 100\% mais
+avec deux couleurs ce qui représente les deux processus de chaque application se
+partageant le coeur.
+\subsection{Sachant que l’attribut cpu.shares permet de répartir le temps CPU entre différents cgroups, comment devrait-on procéder pour lancer deux tâches distinctes sur le cœur 4 de notre processeur et attribuer 75\% du temps CPU à la première tâche et 25\% à la deuxième ?}
+Nous avons procédé de la manière suivante : \newline
+Nous avons gardé les deux cgroup de la question précédente (Low et High) mais
+cette fois affecté le coeur 4 aux deux tâches. Nous avons ensuite défini à
+l'aide de l'attribut cpu.shares que le premier groupe (High) peut occuper 75\% du temps
+du coeur et le deuxième (Low) uniquement 25\%.
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 
@@ -136,9 +186,7 @@ le fait que la fonction sleep lorsqu'elle est interrompue retourne le nombre de
 secondes restantes à son exécution. On pourrait donc comparer à la suite de
 l'instruction sleep si le temps restant est de 0 ou non et dans le cas contraire
 replonger le processus en sommeil pour la durée de temps restante. De plus, dans
-le cas d'un besoin de précision il est conseillé d'utiliser
-
-\textit{clock\_nanosleep} au lieu de \textit{sleep}.
+le cas d'un besoin de précision il est conseillé d'utiliser \textit{clock\_nanosleep} au lieu de \textit{sleep}.
 
 \section{Feedback exercices}
 \subsection{Exercice 1}

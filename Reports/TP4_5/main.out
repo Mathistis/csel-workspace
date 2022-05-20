@@ -10,7 +10,7 @@
 \BOOKMARK [2][-]{subsection.2.2.3}{Est-il possible de surveiller/v\351rifier l\220\351tat actuel de la m\351moire ? Si oui, comment ?}{section.2.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.4}{Les 4 derni\350res lignes sont obligatoires pour que les prochaines commandes fonctionnent correctement. Pouvez-vous en donner la raison ?}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.5}{Comportement des shells dans deux cgroups diff\351rents}{section.2.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.6}{Sachant que l\220attribut cpu.shares permet de r\351partir le temps CPU entre diff\351rents cgroups, comment devrait-on proc\351der pour lancer deux t\342ches distinctes sur le c\234ur 6 de notre processeur et attribuer 75\045 du temps CPU \340 la premi\350re t\342che et 25\045 \340 la deuxi\350me ?}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.6}{Sachant que l\220attribut cpu.shares permet de r\351partir le temps CPU entre diff\351rents cgroups, comment devrait-on proc\351der pour lancer deux t\342ches distinctes sur le c\234ur 4 de notre processeur et attribuer 75\045 du temps CPU \340 la premi\350re t\342che et 25\045 \340 la deuxi\350me ?}{section.2.2}% 13
 \BOOKMARK [1][-]{section.2.3}{Synth\350se des connaissances acquises}{chapter.2}% 14
 \BOOKMARK [2][-]{subsection.2.3.1}{Non acquis}{section.2.3}% 15
 \BOOKMARK [2][-]{subsection.2.3.2}{Acquis, mais \340 exercer}{section.2.3}% 16

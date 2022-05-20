@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+cat /proc/\PYGZlt{}PID\PYGZgt{}/status \PYG{c+c1}{\PYGZsh{} status}
+cat /proc/\PYGZlt{}PID\PYGZgt{}/statm \PYG{c+c1}{\PYGZsh{} stat}
+\end{Verbatim}

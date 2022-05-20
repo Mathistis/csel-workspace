@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+mount \PYGZhy{}t cgroup \PYGZhy{}ocpuacct none /sys/fs/cgroup
+\PYG{n+nb}{cd} /sys/fs/cgroup
+mkdir g1 \PYG{c+c1}{\PYGZsh{}group name can be changed}
+\PYG{n+nb}{echo} \PYG{n+nv}{\PYGZdl{}\PYGZdl{}} \PYGZgt{} g1/tasks \PYG{c+c1}{\PYGZsh{}add current process to group}
+\end{Verbatim}

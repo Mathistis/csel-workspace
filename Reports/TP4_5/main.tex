@@ -55,7 +55,7 @@ Nous avons dû retrouver dans un ancien TP les numéros de pin des boutons de la
 carte car en utilisant les commandes de la section précédente, si ceux-ci ne
 sont pas activés cela ne les affiche pas.
 
-\chapter{TP 5}
+\chapter{TP 5 - Ordonnanceur}
 \section{Résumé du laboratoire}
 Le but de ce laboratoire est de mettre en pratique la théorie vue dans le cours
 en ce qui concerne le multiprocessing ainsi que les ordonnanceurs. Il se compose
@@ -266,9 +266,25 @@ mémoire, un de 20M et l'autre de 30M. Si l'on ajoute notre PID dans celui de 20
 puis dans celui de 30M, au moment de l'ajout dans celui de 30M il est
 automatiquement retiré des tasks du cgroup qui limitait à 20M.
 
-\chapter{TP 6}
+\chapter{TP 6 - Optimisation}
 \section{Résumé du laboratoire}
+Ce laboratoire permet de prendre en main l'outil \href{https://man7.org/linux/man-pages/man1/perf.1.html}{\textit{perf}} et de tester
+quelques unes de ses fonctionnalités. Nous avons préalablement installé cet
+outil dans le buildroot avec les \textit{binutils} associées puis recompilé
+celui-ci.
+\section{Réponses aux questions}
+\subsection{Exercice 1 - Ce programme contient une erreur triviale qui empêche
+une utilisation optimale du cache. De quelle erreur s’agit-il ?}
 
+\subsection{Exercice 1 - Relevez les valeurs du compteur L1-dcache-load-misses
+pour les deux versions de l’application. Quel facteur constatez-vous entre les
+deux valeurs ?}
+
+\subsection{Mesure de l'impact de perf sur la performance du programme}
+
+\section{Synthèse des exercices}
+\subsection{Exercice 1}
+Afin de corriger le bug nous avons ...
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 

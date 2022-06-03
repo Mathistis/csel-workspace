@@ -94,6 +94,7 @@ peut utiliser celles-ci de la manière suivante:
 \begin{minted}[linenos=false]{shell}
 top -p <PID>
 \end{minted}
+\newpage
 Il existe plusieurs outils de ce type pour surveiller l'état de la mémoire et
 des ressources. Une liste de certains d'entre eux est disponible
 \href{https://geekflare.com/fr/process-cpu-memory-monitoring/}{ici}.
@@ -145,6 +146,7 @@ système peut contenir plusieurs types de mémoires différents symbolisés par 
 noeuds. Dans le cas du Nanopi nous n'avons qu'une seule mémoire et donc la
 documentation préconise d'inscrire 0 dans cpuset.mems pour les systèmes n'ayant
 pas de NUMA. (Info trouvée \href{https://docs.oracle.com/cd/E37670_01/E37355/html/ol_cpuset_cgroups.html#:~:text=mems%20changes.,the%20node%20list%20where%20possible.}{ici}). 
+\newpage
 \subsection{Comportement des shells dans deux cgroups différents}
 On observe que chaque application utilise le 100\% du coeur qui lui est affecté.
 Les deux processus à l'intérieur de chaque application doivent par conséquent se
@@ -180,13 +182,22 @@ processus utilisent environ 12.5\% de du coeur. Ainsi on peut voir que la tâche
     \caption{75\% and 25\% of the CPU on core 4}
     \label{fig:LowHighGroup2}
 \end{figure}
+\newpage
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
-
+Nous n'avons pas réellement décelé des connaissances que nous pourrions
+qualifier de non-acquises. En effet, après avoir suivi le cours et réalisé les
+TP, cela nous a permis de comprendre la matière ciblée par ce travail pratique.
 \subsection{Acquis, mais à exercer}
-
+Le domaine d'utilisation des cgroups afin de limiter les ressources disponibles pour des
+processus est très vaste et ce travail pratique nous a permis d'en découvrir
+quelques facettes mais nous pensons que ce sont des aspects que nous pourrions
+mieux aprofondir avec plus de pratique.
 \subsection{Parfaitement acquis}
-
+Comme cité précedemment dans la section des connaissances à exercer, nous ne
+pourrions pas dire que nous avons parfaitement acquis les connaissances
+relatives aux cgroups, mais nous les avons cependant bien comprises et nous
+sommes en mesure de pouvoir affirmer que nous saurions les réutiliser.
 \section{Infos utiles à retenir}
 La fonction c \textit{strcmp} retourne la valeur 0 quand les deux chaînes de
 caractères sont identiques. Nous nous sommes faits avoir par ceci et avons perdu
@@ -202,7 +213,7 @@ secondes restantes à son exécution. On pourrait donc comparer à la suite de
 l'instruction sleep si le temps restant est de 0 ou non et dans le cas contraire
 replonger le processus en sommeil pour la durée de temps restante. De plus, dans
 le cas d'un besoin de précision il est conseillé d'utiliser \textit{clock\_nanosleep} au lieu de \textit{sleep}.
-
+\newpage
 \section{Feedback exercices}
 \subsection{Exercice 1}
 Nous avons réalisé cet exercice en utilisant un \textit{socketpair} afin de
@@ -237,7 +248,7 @@ l'utilisation des coeurs comme le montre la figure suivante :
     \caption{Multi Core usage}
     \label{fig:MultiCore}
 \end{figure}
-\newpage
+
 \subsection{Exercice 2}
 Il a été observé que si l'on lance le programme et que l'on essaie de limiter le
 nombre de bytes possibles alors qu'il a déjà atteint le quota, l'écriture est
@@ -259,7 +270,6 @@ manière suivante :
 \begin{minted}[linenos=false]{shell}
     ./set_memory_limit <PID> <MEMORY_LIMIT>
 \end{minted}
-
 \subsection{Exercice 3}
 Nous avons également pu observer que si l'on crée deux cgroup de limitation de
 mémoire, un de 20M et l'autre de 30M. Si l'on ajoute notre PID dans celui de 20M

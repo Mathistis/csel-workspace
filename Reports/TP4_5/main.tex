@@ -55,7 +55,7 @@ Nous avons dû retrouver dans un ancien TP les numéros de pin des boutons de la
 carte car en utilisant les commandes de la section précédente, si ceux-ci ne
 sont pas activés cela ne les affiche pas.
 
-\chapter{TP 5}
+\chapter{TP 5 - Ordonnanceur}
 \section{Résumé du laboratoire}
 Le but de ce laboratoire est de mettre en pratique la théorie vue dans le cours
 en ce qui concerne le multiprocessing ainsi que les ordonnanceurs. Il se compose
@@ -94,6 +94,7 @@ peut utiliser celles-ci de la manière suivante:
 \begin{minted}[linenos=false]{shell}
 top -p <PID>
 \end{minted}
+\newpage
 Il existe plusieurs outils de ce type pour surveiller l'état de la mémoire et
 des ressources. Une liste de certains d'entre eux est disponible
 \href{https://geekflare.com/fr/process-cpu-memory-monitoring/}{ici}.
@@ -145,6 +146,7 @@ système peut contenir plusieurs types de mémoires différents symbolisés par 
 noeuds. Dans le cas du Nanopi nous n'avons qu'une seule mémoire et donc la
 documentation préconise d'inscrire 0 dans cpuset.mems pour les systèmes n'ayant
 pas de NUMA. (Info trouvée \href{https://docs.oracle.com/cd/E37670_01/E37355/html/ol_cpuset_cgroups.html#:~:text=mems%20changes.,the%20node%20list%20where%20possible.}{ici}). 
+\newpage
 \subsection{Comportement des shells dans deux cgroups différents}
 On observe que chaque application utilise le 100\% du coeur qui lui est affecté.
 Les deux processus à l'intérieur de chaque application doivent par conséquent se
@@ -165,13 +167,37 @@ Nous avons gardé les deux cgroup de la question précédente (Low et High) mais
 cette fois affecté le coeur 4 aux deux tâches. Nous avons ensuite défini à
 l'aide de l'attribut cpu.shares que le premier groupe (High) peut occuper 75\% du temps
 du coeur et le deuxième (Low) uniquement 25\%.
+Pour ce faire nous avons trouvé dans la documentation que la valeur 1024 dans
+cpu.shares correspondait au 100\% du coeur nous avons donc mis 768 dans cet
+attribut pour le High cgroup et 256 pour le Low. On peut voir sur la figure
+suivante que le coeur 4 est occupé à 100\% par 4 processus (deux pour chaque
+tâche), et que pour la tâche appartenant au groupe 1, les processus utilisent
+environ 37.5\% chacun alors que pour la tâche appartenant au groupe 2, les
+processus utilisent environ 12.5\% de du coeur. Ainsi on peut voir que la tâche
+1 (appartenant au groupe High) utilise bien 75\% du coeur et la tâche 2
+(appartenant au groupe Low) utilise bien 25\%.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/75x25Use.png}
+    \caption{75\% and 25\% of the CPU on core 4}
+    \label{fig:LowHighGroup2}
+\end{figure}
+\newpage
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
-
+Nous n'avons pas réellement décelé des connaissances que nous pourrions
+qualifier de non-acquises. En effet, après avoir suivi le cours et réalisé les
+TP, cela nous a permis de comprendre la matière ciblée par ce travail pratique.
 \subsection{Acquis, mais à exercer}
-
+Le domaine d'utilisation des cgroups afin de limiter les ressources disponibles pour des
+processus est très vaste et ce travail pratique nous a permis d'en découvrir
+quelques facettes mais nous pensons que ce sont des aspects que nous pourrions
+mieux aprofondir avec plus de pratique.
 \subsection{Parfaitement acquis}
-
+Comme cité précedemment dans la section des connaissances à exercer, nous ne
+pourrions pas dire que nous avons parfaitement acquis les connaissances
+relatives aux cgroups, mais nous les avons cependant bien comprises et nous
+sommes en mesure de pouvoir affirmer que nous saurions les réutiliser.
 \section{Infos utiles à retenir}
 La fonction c \textit{strcmp} retourne la valeur 0 quand les deux chaînes de
 caractères sont identiques. Nous nous sommes faits avoir par ceci et avons perdu
@@ -187,7 +213,7 @@ secondes restantes à son exécution. On pourrait donc comparer à la suite de
 l'instruction sleep si le temps restant est de 0 ou non et dans le cas contraire
 replonger le processus en sommeil pour la durée de temps restante. De plus, dans
 le cas d'un besoin de précision il est conseillé d'utiliser \textit{clock\_nanosleep} au lieu de \textit{sleep}.
-
+\newpage
 \section{Feedback exercices}
 \subsection{Exercice 1}
 Nous avons réalisé cet exercice en utilisant un \textit{socketpair} afin de
@@ -222,7 +248,7 @@ l'utilisation des coeurs comme le montre la figure suivante :
     \caption{Multi Core usage}
     \label{fig:MultiCore}
 \end{figure}
-\newpage
+
 \subsection{Exercice 2}
 Il a été observé que si l'on lance le programme et que l'on essaie de limiter le
 nombre de bytes possibles alors qu'il a déjà atteint le quota, l'écriture est
@@ -244,16 +270,31 @@ manière suivante :
 \begin{minted}[linenos=false]{shell}
     ./set_memory_limit <PID> <MEMORY_LIMIT>
 \end{minted}
-
 \subsection{Exercice 3}
 Nous avons également pu observer que si l'on crée deux cgroup de limitation de
 mémoire, un de 20M et l'autre de 30M. Si l'on ajoute notre PID dans celui de 20M
 puis dans celui de 30M, au moment de l'ajout dans celui de 30M il est
 automatiquement retiré des tasks du cgroup qui limitait à 20M.
 
-\chapter{TP 6}
+\chapter{TP 6 - Optimisation}
 \section{Résumé du laboratoire}
+Ce laboratoire permet de prendre en main l'outil \href{https://man7.org/linux/man-pages/man1/perf.1.html}{\textit{perf}} et de tester
+quelques unes de ses fonctionnalités. Nous avons préalablement installé cet
+outil dans le buildroot avec les \textit{binutils} associées puis recompilé
+celui-ci.
+\section{Réponses aux questions}
+\subsection{Exercice 1 - Ce programme contient une erreur triviale qui empêche
+une utilisation optimale du cache. De quelle erreur s’agit-il ?}
 
+\subsection{Exercice 1 - Relevez les valeurs du compteur L1-dcache-load-misses
+pour les deux versions de l’application. Quel facteur constatez-vous entre les
+deux valeurs ?}
+
+\subsection{Mesure de l'impact de perf sur la performance du programme}
+
+\section{Synthèse des exercices}
+\subsection{Exercice 1}
+Afin de corriger le bug nous avons ...
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 

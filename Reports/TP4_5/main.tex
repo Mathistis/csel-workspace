@@ -285,16 +285,122 @@ celui-ci.
 \section{Réponses aux questions}
 \subsection{Exercice 1 - Ce programme contient une erreur triviale qui empêche
 une utilisation optimale du cache. De quelle erreur s’agit-il ?}
-
+\label{exo1_q1}
+Premièrement nous avons remarqué que le programme parcourt le tableau par
+colonne au lieu de le faire par ligne et comme le cache charge lors d'un accès
+mémoire les cases adjacentes. Et comme ici on parcourt par colonne cela donne
+des grands sauts de mémoire et fait que l'on utilise quasiment pas le cache.
+Nous avons donc modifié le code afin qu'il parcourt le tableau par ligne et
+comme on peut le voir sur la figure suivante cela a déjà réduit le temps
+d'exécution d'un facteur de 17.96. (voir screenshots dans la section \ref{Exercice1})
 \subsection{Exercice 1 - Relevez les valeurs du compteur L1-dcache-load-misses
 pour les deux versions de l’application. Quel facteur constatez-vous entre les
 deux valeurs ?}
-
+Après la modification du code nous avons relancé les deux versions avec la
+commande:
+\begin{minted}[linenos=false]{shell}
+    perf stat -e L1-dcache-load-misses ./ex1
+\end{minted}
+Qui permet de mesurer le nombre de cache misses qui sont parvenus lors de
+l'exécution du programme. Les résultats sont les suivants:
+\begin{figure}[H]
+    \centering
+    \subcaptionbox{Sans modification de code}{\includegraphics[width=0.47\textwidth]{imageSources/cache_misses_v2.png}}
+    \hfill
+    \subcaptionbox{Avec modification de code}{\includegraphics[width=0.47\textwidth]{imageSources/cache_misses_v1.png}}
+    \caption{Cache misses avec et sans correction du code}
+    \label{fig:CacheMisses}
+\end{figure}
+On observe donc un facteur de 303.175 et on remarque que effectivement comme
+cité à la section \ref{exo1_q1}, le cache n'est quasiment pas utilisé dans la
+version initiale du code et la modification permet d'en tirer avantage et de
+largement diminuer le temps d'exécution.
 \subsection{Mesure de l'impact de perf sur la performance du programme}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/time_with_perf.png}
+    \caption{Impact de la fonction perf sur la performance du programme}
+    \label{fig:perfImpact}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/time_without_perf.png}
+    \caption{Exécution sans perf}
+    \label{fig:perfImpact2}
+\end{figure}
+On peut observer ici que la fonction \textit{perf} dans le cas de ce programme
+rallonge son temps d'exécution de environ 2.8s. On peut donc en déduire qu'il
+est très utile d'utiliser cette fonction pour mesurer les performances du
+programme dans une phase de développement et de debug puis de l'enlever dans une
+phase de déploiement finale. \newpage
+\subsection{Explication des éléments}
+\begin{itemize}
+    \item instructions :
+    \item cache-misses :
+    \item branch-misses :
+    \item L1-dcache-load-misses :
+    \item cpu-migrations :
+    \item context-switches :
+\end{itemize}
 \section{Synthèse des exercices}
 \subsection{Exercice 1}
-Afin de corriger le bug nous avons ...
+\label{Exercice1}
+Nous avons tout d'abord lancé la commande 
+\begin{minted}[linenos=false]{shell}
+    perf stat ./ex1
+\end{minted}
+Qui a donné le résultat suivant :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imageSources/perf_stat_without_option.png}
+    \caption{Perf stat without options}
+    \label{fig:PerfStatWithoutOption}
+\end{figure}
+On peut observer un nombre de cycles très élevé ainsi qu'un temps d'exécution
+élevé également.
+Après la modification du code, nous avons relancé la commande et d'ores et déjà
+pu observer une nette réduction du temps comme on peut le voir sur la figure
+suivante :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imageSources/perf_stat_with_codeModif.png}
+    \caption{Perf stat with code modifications}
+    \label{fig:PerfStatWithCodeModif}
+\end{figure}
+
+\subsection{Exercice 2}
+\subsubsection{Analyse du code source}
+Le programme créé un tableau de tille SIZE et remplis chaque cases avec des
+entiers aléatoires entre  0 et 511. Après, il fait la somme de toutes les
+valeurs plus grandes que 255 dans le tableau et cela répété 10000 fois.
+\subsubsection{Mesure du temps d'exécution}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imageSources/Ex2_ExecTime1.png}
+    \caption{Mesure du temps d'exécution du code}
+    \label{fig:ExecTime1}
+\end{figure}
+\subsubsection{Mesure du temps d'exécution de la version modifiée du code}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imageSources/Ex2_ExecTime2.png}
+    \caption{Mesure du temps d'exécution de la version modifiée du code}
+    \label{fig:ExecTime2}
+\end{figure}
+Lors de la réalisation de la boucle (sans optimisation) il est impossible pour
+le processeur de prédire si il faudra faire le branchement ou non car les
+données à l'intérieur sont aléatoires. Grâce au tri du tableau (version
+optimisée) il saura que au début il faut jamais faire le branchement et après il
+faudra toujours le faire. La prédiction de branchement sera donc très efficace
+dans ce cas.
+
+\subsection{Exercice 3}
+Avec l'analyse du perf report nous remarquons qu'effectivement
+\textit{std::operator==<char>} (qui est une comparaison entre deux caractères)
+est la fonction la plus chronophage en termes de temps de cycle. Etant donné que
+le programme recherche des adresses IP uniques cela a du sens car en effet il
+est ainsi obligé de comparé les adresses lues aux autres adresses afin de savoir
+si celle-ci est unique. 
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
 

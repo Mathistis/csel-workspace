@@ -26,10 +26,16 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{Exercice 1 - Ce programme contient une erreur triviale qui emp\352che une utilisation optimale du cache. De quelle erreur s\220agit-il ?}{section.3.2}% 26
 \BOOKMARK [2][-]{subsection.3.2.2}{Exercice 1 - Relevez les valeurs du compteur L1-dcache-load-misses pour les deux versions de l\220application. Quel facteur constatez-vous entre les deux valeurs ?}{section.3.2}% 27
 \BOOKMARK [2][-]{subsection.3.2.3}{Mesure de l'impact de perf sur la performance du programme}{section.3.2}% 28
-\BOOKMARK [1][-]{section.3.3}{Synth\350se des exercices}{chapter.3}% 29
-\BOOKMARK [2][-]{subsection.3.3.1}{Exercice 1}{section.3.3}% 30
-\BOOKMARK [1][-]{section.3.4}{Synth\350se des connaissances acquises}{chapter.3}% 31
-\BOOKMARK [2][-]{subsection.3.4.1}{Non acquis}{section.3.4}% 32
-\BOOKMARK [2][-]{subsection.3.4.2}{Acquis, mais \340 exercer}{section.3.4}% 33
-\BOOKMARK [2][-]{subsection.3.4.3}{Parfaitement acquis}{section.3.4}% 34
-\BOOKMARK [1][-]{section.3.5}{Feedback}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.2.4}{Explication des \351l\351ments}{section.3.2}% 29
+\BOOKMARK [1][-]{section.3.3}{Synth\350se des exercices}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.1}{Exercice 1}{section.3.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.2}{Exercice 2}{section.3.3}% 32
+\BOOKMARK [3][-]{subsubsection.3.3.2.1}{Analyse du code source}{subsection.3.3.2}% 33
+\BOOKMARK [3][-]{subsubsection.3.3.2.2}{Mesure du temps d'ex\351cution}{subsection.3.3.2}% 34
+\BOOKMARK [3][-]{subsubsection.3.3.2.3}{Mesure du temps d'ex\351cution de la version modifi\351e du code}{subsection.3.3.2}% 35
+\BOOKMARK [2][-]{subsection.3.3.3}{Exercice 3}{section.3.3}% 36
+\BOOKMARK [1][-]{section.3.4}{Synth\350se des connaissances acquises}{chapter.3}% 37
+\BOOKMARK [2][-]{subsection.3.4.1}{Non acquis}{section.3.4}% 38
+\BOOKMARK [2][-]{subsection.3.4.2}{Acquis, mais \340 exercer}{section.3.4}% 39
+\BOOKMARK [2][-]{subsection.3.4.3}{Parfaitement acquis}{section.3.4}% 40
+\BOOKMARK [1][-]{section.3.5}{Feedback}{chapter.3}% 41

@@ -54,18 +54,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.2}Exercice 1 - Relevez les valeurs du compteur L1-dcache-load-misses pour les deux versions de l’application. Quel facteur constatez-vous entre les deux valeurs ?}{8}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Mesure de l'impact de perf sur la performance du programme}{8}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Mesure de l'impact de perf sur la performance du programme}{9}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Synthèse des exercices}{8}{section.3.3}%
+\contentsline {subsection}{\numberline {3.2.4}Explication des éléments}{10}{subsection.3.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Exercice 1}{8}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.3}Synthèse des exercices}{10}{section.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Synthèse des connaissances acquises}{8}{section.3.4}%
+\contentsline {subsection}{\numberline {3.3.1}Exercice 1}{10}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.1}Non acquis}{8}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.3.2}Exercice 2}{11}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.2}Acquis, mais à exercer}{8}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Analyse du code source}{11}{subsubsection.3.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4.3}Parfaitement acquis}{8}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}Mesure du temps d'exécution}{11}{subsubsection.3.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Feedback}{8}{section.3.5}%
+\contentsline {subsubsection}{\numberline {3.3.2.3}Mesure du temps d'exécution de la version modifiée du code}{12}{subsubsection.3.3.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.3}Exercice 3}{12}{subsection.3.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Synthèse des connaissances acquises}{12}{section.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}Non acquis}{12}{subsection.3.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.2}Acquis, mais à exercer}{12}{subsection.3.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.3}Parfaitement acquis}{12}{subsection.3.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Feedback}{12}{section.3.5}%

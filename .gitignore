@@ -2,3 +2,4 @@ images
 buildroot-images
 src/*/app
 .obj
+access_log_NASA*

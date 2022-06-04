@@ -335,13 +335,40 @@ programme dans une phase de développement et de debug puis de l'enlever dans un
 phase de déploiement finale. \newpage
 \subsection{Explication des éléments}
 \begin{itemize}
-    \item instructions :
-    \item cache-misses :
-    \item branch-misses :
-    \item L1-dcache-load-misses :
-    \item cpu-migrations :
-    \item context-switches :
+    \item instructions : Ordre donné par un programme au processeur.
+    \item cache-misses : Evènement dans lequel une app fait une requête pour
+    retrouver une donnée du cache, mais que celle-ci n'est pas actuellement dans
+    cache.
+    \item branch-misses : Evènement apparaissant lorsque la CPU prédit mal la
+    prochaine instruction à exécuter.
+    \item L1-dcache-load-misses : Représente le moment ou le processeur a
+    besoin de récupérer une donnée sur le cache, mais que cette donnée n'y est
+    pas. Le L1-dcache est le cache de niveau 1, le plus petit et le plus rapide.
+    Cela signifie également que la donnée a due être reprise du cache L2 qui a
+    une latence différente.
+    \item cpu-migrations : Lorsqu'un thread se retrouve ordonnancé (ou lancé)
+    sur un autre CPU que celui sur lequel il était initialement prévu.
+    \item context-switches : Procédure qu'un CPU suit pour passer d'une tâche à
+    l'autre en s'assurant que celles-ci ne soient pas en conflit. Cela implique
+    de sauvegarder le contexte ou l'état d'un process afin qu'il puisse être
+    rechargé à sa prochaine exécution.
 \end{itemize}
+
+\subsection{Décrivez comment devrait-on procéder pour mesurer la latence et la
+gigue d’interruption, ceci aussi bien au niveau du noyau (kernel space) que de
+l’application (user space)}
+Nous pensions utiliser l'outil
+\href{https://man7.org/linux/man-pages/man1/perf-sched.1.html}{\textit{perf-sched}}
+qui permet de tracer ou mesurer les performances du scheduler (et donc les
+latences). On peut voir dans la doc que cet outil possède diverses options qui
+permettent comme vu dans un autre point de ce tp de générer un fichier de record
+qui contient toutes les informations mesurées. Cependant il nous manquait un
+module dans le noyau afin d'utiliser \textit{perf-sched} ce qui implique que
+nous n'avons pas le tracing dans le debugfs et donc l'outil ne fonctionne
+pas.\newline
+N'ayant pas cet outil de profiling nous avons imaginé comment nous pourrions
+créer un programme permettant de le faire:\newline
+On crée un programme avec une clock afin de mesurer le temps, on lance 
 \section{Synthèse des exercices}
 \subsection{Exercice 1}
 \label{Exercice1}
@@ -399,16 +426,37 @@ Avec l'analyse du perf report nous remarquons qu'effectivement
 \textit{std::operator==<char>} (qui est une comparaison entre deux caractères)
 est la fonction la plus chronophage en termes de temps de cycle. Etant donné que
 le programme recherche des adresses IP uniques cela a du sens car en effet il
-est ainsi obligé de comparé les adresses lues aux autres adresses afin de savoir
-si celle-ci est unique. 
+est ainsi obligé de comparer les adresses lues aux autres adresses afin de savoir
+si celle-ci est unique. \newline
+Nous avons essayé d'utiliser une
+\href{https://m.cplusplus.com/reference/map/map/}{map} en pensant que l'accès
+par clé (hash) serait plus rapide que l'accès par adresse. De plus, nous avons remarqué que la méthode
+\href{https://m.cplusplus.com/reference/map/map/insert/}{\textit{insert}}
+permettait de n'insérer dans la \textit{map} uniquement si la clé n'était pas
+déjà présente et de ce fait cela nous evitait les comparaisons avec chaque
+string.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imageSources/Perf_Record_Optimised.png}
+    \caption{Perf report de la version optimisée du code}
+    \label{fig:PerfReportOptim}
+\end{figure}
+On peut observer sur cette figure qu'il n'y a plus comme précédemment (Voir
+\href{https://mse-csel.github.io/website/optimisations/performances/perf-tp/}{consigne}
+, exercice 3, Analyse des résultat) une
+fonction qui consomme la majorité du temps cpu et donc qu'une optimisation est
+déjà réussie. A partir de là, il serait plus compliqué d'optimiser encore car il
+est bien plus difficile de pointer la fonction chronophage.
 \section{Synthèse des connaissances acquises}
 \subsection{Non acquis}
-
+Nous n'avons que peu de connaissances en algorithmes d'optimisation et il nous
+serait nécessaire de se documenter et d'approfondir ce sujet.
 \subsection{Acquis, mais à exercer}
-
+L'utilisation de perf et particulièrement des fonctions de ce TP est acquise,
+mais au vu de la diversité de ces fonctions, nous pensons qu'il y a encore du
+potentiel d'amélioration.
 \subsection{Parfaitement acquis}
-
-\section{Feedback}
+Tout le reste vu lors de ce TP.
 
 \end{document}
 

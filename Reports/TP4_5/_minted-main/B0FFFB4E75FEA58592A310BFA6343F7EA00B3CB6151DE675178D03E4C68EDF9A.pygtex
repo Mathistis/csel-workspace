@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    perf stat \PYGZhy{}e L1\PYGZhy{}dcache\PYGZhy{}load\PYGZhy{}misses ./ex1
+\end{Verbatim}

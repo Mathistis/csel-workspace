@@ -1,6 +1,6 @@
-HostCounter.o: HostCounter.cpp \
+ApacheAccessLogAnalyzer.o: ApacheAccessLogAnalyzer.cpp \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/sysroot/usr/include/stdc-predef.h \
- HostCounter.h \
+ ApacheAccessLogAnalyzer.h HostCounter.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/string \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/c++config.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/os_defines.h \
@@ -153,18 +153,58 @@ HostCounter.o: HostCounter.cpp \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/charconv.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/functional_hash.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/basic_string.tcc \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/set \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_tree.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/unordered_map \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/ext/aligned_buffer.h \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_set.h \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_multiset.h \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/erase_if.h \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/algorithm \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/hashtable.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/hashtable_policy.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/tuple \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/utility \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_relops.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/array \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/uses_allocator.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/invoke.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/limits \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/unordered_map.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/erase_if.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/vector \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_uninitialized.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_vector.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_bvector.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/vector.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/fstream \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/istream \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/ios \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/ios_base.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/locale_classes.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/locale_classes.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/system_error \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/error_constants.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/stdexcept \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/streambuf \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/streambuf.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/basic_ios.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/locale_facets.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/cwctype \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/sysroot/usr/include/wctype.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/sysroot/usr/include/bits/wctype-wchar.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/ctype_base.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/streambuf_iterator.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/ctype_inline.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/locale_facets.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/basic_ios.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/ostream \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/ostream.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/istream.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/codecvt.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/basic_file.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/aarch64-buildroot-linux-gnu/bits/c++io.h \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/fstream.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/iostream \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/sstream \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/sstream.tcc \
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/algorithm \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_algo.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/algorithmfwd.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_heap.h \
  /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/stl_tempbuf.h \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/uniform_int_dist.h \
- /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/limits
+ /buildroot/output/host/aarch64-buildroot-linux-gnu/include/c++/10.3.0/bits/uniform_int_dist.h

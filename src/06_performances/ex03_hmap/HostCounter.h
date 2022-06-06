@@ -1,6 +1,6 @@
 #include <string>
 
-#include <set>
+#include <unordered_map>
 
 class HostCounter
 {
@@ -18,5 +18,5 @@ class HostCounter
         // check if host is already in the list
         bool isNewHost(std::string hostname);
 
-        std::set< std::string > myHosts; 
+        std::unordered_map< std::string , int > myHosts; 
 };

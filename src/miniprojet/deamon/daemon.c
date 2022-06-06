@@ -45,9 +45,8 @@
 #define GPIO_K2 "/sys/class/gpio/gpio2"
 #define GPIO_K3 "/sys/class/gpio/gpio3"
 #define MYDEVICE "/sys/class/led_class/led_device"
-#define FREQ        "/freq"
-#define IS_MANU     "/is_manu"
-
+#define FREQ "/freq"
+#define IS_MANU "/is_manu"
 
 #define ACK_READ_SIZE 20
 #define LED "10"
@@ -61,8 +60,9 @@
 #define DEC_FREQ 0x11 //  "
 #define INC_FREQ 0x12 //  "
 #define FIFO_INTERRUPT 0x13
-#define INCREMENT_HZ    1
-
+#define FIFO_SET_MANUAL 0x14 //  "
+#define FIFO_SET_FREQ 0x15   //  "
+#define INCREMENT_HZ 1
 
 int main()
 {
@@ -92,25 +92,22 @@ int main()
             .edge_type = GPIO_K3 "/edge",
             .edge = "falling",
             .functionnality = DEC_FREQ,
-        }
-    };
-
+        }};
 
     int led = open_led();
     pwrite(led, "1", sizeof("1"), 0);
-    
+
     struct k_fd btn_fd[PIN_NBR];
-    err = open_btn( btn_pins, btn_fd, PIN_NBR);
-    if(err <0) {
+    err = open_btn(btn_pins, btn_fd, PIN_NBR);
+    if (err < 0)
+    {
         printf("Error Openning BTN\n");
         return -1;
     }
 
-
     int epfd = epoll_create1(0);
     if (epfd < 0)
         printf("[Epoll] epoll_create1() = -1\n");
-
 
     for (int i = 0; i < PIN_NBR; i++)
     {
@@ -123,22 +120,22 @@ int main()
         }
     }
 
+    // int fifo_fd = init_fifo();
+    // if(fifo_fd < 0){
+    //     printf("Error creating Fifo\n");
+    // }
+    // struct custom_event_data fifo_data = {
+    //     .fd = fifo_fd,
+    //     .functionnality = FIFO_INTERRUPT};
+    // struct epoll_event event_fifo = {
+    //     .events = EPOLLIN,
+    //     .data.ptr = &fifo_data,
+    // };
 
-    int fifo_fd = init_fifo();
-    
-    struct custom_event_data fifo_data = {
-        .fd = fifo_fd,
-        .functionnality = FIFO_INTERRUPT
-    };
-    struct epoll_event event_fifo = {
-        .events = EPOLLIN,
-        .data.ptr = &fifo_data,
-    };
-
-    err = epoll_ctl(epfd, EPOLL_CTL_ADD,fifo_fd, &event_fifo);
-
-    
-    
+    // err = epoll_ctl(epfd, EPOLL_CTL_ADD, fifo_fd, &event_fifo);
+    // if(err < 0){
+    //     printf("Can't add FIFO to epoll err: %d\n", err);
+    // }
     struct epoll_event list_events[10];
     int nbr_events = 0;
     char buff[ACK_READ_SIZE] = ""; // prepare buffre to read fd that interrupt (acknowledge)
@@ -146,89 +143,117 @@ int main()
     while (1)
     {
         nbr_events = epoll_wait(epfd, list_events, 10, -1);
-        if(nbr_events <0) { 
+        if (nbr_events < 0)
+        {
             printf("Error in wait. Abort.\n");
             break;
         }
         for (int i = 0; i < nbr_events; i++)
         {
-            struct custom_event_data* data = list_events[i].data.ptr;
+            struct custom_event_data *data = list_events[i].data.ptr;
             int len = 0;
             int fd = 0;
-            switch(data->functionnality){
-                case FIFO_INTERRUPT:
-                    err = fifo_read(data->fd, command, 2);      //
-                    if(err < 0) printf("Error reading FIFO. Not Enought elements\n");
-                    /*TODO: Traiter les commandes dans command[0] avec l'argument
-                    dans command[1]
-                    PAS TESTE la fifo !
-                    */
-                    break;
-                case INC_FREQ:
-                    len = pread(data->fd, buff, ACK_READ_SIZE, 0);
-                    if(len < 0){
-                        printf("Error reading INC_FREQ fd");
-                        break;
-                    }
-                    printf("BTN_FREQ_INQ\n");
+            switch (data->functionnality)
+            {
+            case FIFO_INTERRUPT:
+                err = fifo_read(data->fd, command, 2); //
+                if (err < 0)
+                    printf("Error reading FIFO. Not Enought elements\n");
+                /*TODO: Traiter les commandes dans command[0] avec l'argument
+                dans command[1]
+                PAS TESTE la fifo !
+                switch command[0]
+                */
+                switch (command[0])
+                {
+                case FIFO_SET_FREQ:
                     fd = open(MYDEVICE FREQ, O_RDWR);
-                    len = read(fd, buff, ACK_READ_SIZE);
-                    int freq_inc = 0;
-                    sscanf(buff, "%d", &freq_inc);
-                    freq_inc += INCREMENT_HZ;
-                    sprintf(buff, "%d", freq_inc);
+                    sprintf(buff, "%d", command[1]);
+                    printf("Set new freq to %d", command[1]);
                     write(fd, buff, strlen(buff));
                     close(fd);
                     break;
-
-
-                case DEC_FREQ:
-                    len = pread(data->fd, buff, ACK_READ_SIZE, 0);
-                    if(len < 0){
-                        printf("Error reading DEC_FREQ fd");
-                        break;
-                    }
-                    printf("BTN_FREQ_DEC\n");
-                    fd = open(MYDEVICE FREQ, O_RDWR);
-                    len = read(fd, buff, ACK_READ_SIZE);
-                    if(fd < 0){
-                        printf("Error openning IS_MANU fd %d", fd);
-                        break;
-                    }
-                    int freq_inc_dec = 0;
-                    sscanf(buff, "%d", &freq_inc_dec);
-                    freq_inc_dec -= INCREMENT_HZ;
-                    if(freq_inc_dec <= 0) freq_inc_dec = 1;
-                    sprintf(buff, "%d", freq_inc_dec);
-                    write(fd, buff, strlen(buff));
-                    close(fd);
-                    break;
-
-                case RST_FREQ:
-                    len = pread(data->fd, buff, ACK_READ_SIZE, 0);
-                    if(len < 0){
-                        printf("Error reading RST_FREQ fd");
-                        break;
-                    }
+                case FIFO_SET_MANUAL:
                     fd = open(MYDEVICE IS_MANU, O_RDWR);
-                    if(fd < 0){
-                        printf("Error openning IS_MANU fd %d", fd);
-                        break;
-                    }
+                    sprintf(buff, "%d", command[1]);
+                    printf("Set mode to %d", command[1]);
 
-                    len = read(fd, buff, ACK_READ_SIZE);
-                    int is_manu = 0;
-                    sscanf(buff, "%d", &is_manu);
-                    is_manu = 1 - is_manu;
-
-                    sprintf(buff, "%d", is_manu);
                     write(fd, buff, strlen(buff));
                     printf("BTN_FREQ_RST\n");
-                    close(fd);
                     break;
                 default:
-                    printf("Unknow functionnality ... ?! \n");
+                    break;
+                }
+                break;
+            case INC_FREQ:
+                len = pread(data->fd, buff, ACK_READ_SIZE, 0);
+                if (len < 0)
+                {
+                    printf("Error reading INC_FREQ fd");
+                    break;
+                }
+                printf("BTN_FREQ_INQ\n");
+                fd = open(MYDEVICE FREQ, O_RDWR);
+                len = read(fd, buff, ACK_READ_SIZE);
+                int freq_inc = 0;
+                sscanf(buff, "%d", &freq_inc);
+                freq_inc += INCREMENT_HZ;
+                sprintf(buff, "%d", freq_inc);
+                write(fd, buff, strlen(buff));
+                close(fd);
+                break;
 
+            case DEC_FREQ:
+                len = pread(data->fd, buff, ACK_READ_SIZE, 0);
+                if (len < 0)
+                {
+                    printf("Error reading DEC_FREQ fd");
+                    break;
+                }
+                printf("BTN_FREQ_DEC\n");
+                fd = open(MYDEVICE FREQ, O_RDWR);
+                len = read(fd, buff, ACK_READ_SIZE);
+                if (fd < 0)
+                {
+                    printf("Error openning IS_MANU fd %d", fd);
+                    break;
+                }
+                int freq_inc_dec = 0;
+                sscanf(buff, "%d", &freq_inc_dec);
+                freq_inc_dec -= INCREMENT_HZ;
+                if (freq_inc_dec <= 0)
+                    freq_inc_dec = 1;
+                sprintf(buff, "%d", freq_inc_dec);
+                write(fd, buff, strlen(buff));
+                close(fd);
+                break;
+
+            case RST_FREQ:
+                len = pread(data->fd, buff, ACK_READ_SIZE, 0);
+                if (len < 0)
+                {
+                    printf("Error reading RST_FREQ fd");
+                    break;
+                }
+                fd = open(MYDEVICE IS_MANU, O_RDWR);
+                if (fd < 0)
+                {
+                    printf("Error openning IS_MANU fd %d", fd);
+                    break;
+                }
+
+                len = read(fd, buff, ACK_READ_SIZE);
+                int is_manu = 0;
+                sscanf(buff, "%d", &is_manu);
+                is_manu = 1 - is_manu;
+
+                sprintf(buff, "%d", is_manu);
+                write(fd, buff, strlen(buff));
+                printf("BTN_FREQ_RST\n");
+                close(fd);
+                break;
+            default:
+                printf("Unknow functionnality ... ?! \n");
             }
         }
     }

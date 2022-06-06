@@ -11,7 +11,10 @@
 #define MODE 0666
 
 int init_fifo(){
-    mkfifo(PATH, MODE);
+    int err = mkfifo(PATH, MODE);
+    if(err < 0){
+        printf("Can't create Fifo err: %d", err);
+    }
     int fd = open(PATH, O_RDONLY);
     
     return fd;

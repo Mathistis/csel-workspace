@@ -1,9 +1,9 @@
 #pragma once
 #ifndef __FIFO
 #define __FIFO
-#define PATH "../"
+#define PATH "../ipc"
 
-int init_fifo();
+extern int init_fifo();
 
 int fifo_read(int fd, int* buf, int len);
 

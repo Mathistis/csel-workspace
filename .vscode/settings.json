@@ -53,6 +53,7 @@
         "timerfd.h": "c",
         "led_controller.h": "c",
         "sched.h": "c",
-        "kernel.h": "c"
+        "kernel.h": "c",
+        "stat.h": "c"
     }
 }

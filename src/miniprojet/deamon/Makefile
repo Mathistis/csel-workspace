@@ -1,4 +1,4 @@
-EXE=app
+EXE=deamon
 SRCS=$(wildcard *.c)
 
 ifeq ($(target),)

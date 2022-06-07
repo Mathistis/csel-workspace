@@ -5,6 +5,6 @@
 
 extern int init_fifo();
 
-int fifo_read(int fd, int* buf, int len);
+int fifo_read(int fd, void * buf, int size);
 
 #endif

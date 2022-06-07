@@ -11,18 +11,21 @@
 #define MODE 0666
 
 int init_fifo(){
+    printf("INITIALIZING FIFO\n");
     int err = mkfifo(PATH, MODE);
     if(err < 0){
-        printf("Can't create Fifo err: %d", err);
+        printf("Can't create Fifo err: %d\n", err);
     }
-    int fd = open(PATH, O_RDONLY);
-    
+    int fd = open(PATH, O_RDONLY | O_NONBLOCK | O_CREAT, MODE);
+    if(fd < 0){
+        printf("Invalid Fifo fd : %d\n", fd);
+    }
     return fd;
 }
 
-int fifo_read(int fd, int* buf, int len){
+int fifo_read(int fd, void* buf, int size){
     
-    int readen = read(fd, buf, sizeof(int) * len);    
-    if (readen == len) return 0;
-    else return -1;
+    int readen = read(fd, buf, size);    
+    if (readen == size) return 0;
+    else return readen;
 }

@@ -64,6 +64,14 @@
 #define FIFO_SET_FREQ 0x15   //  "
 #define INCREMENT_HZ 1
 
+
+
+struct cmd  {
+    int cmd;
+    int value;
+};
+
+
 int main()
 {
     int err = 0;
@@ -120,26 +128,30 @@ int main()
         }
     }
 
-    // int fifo_fd = init_fifo();
-    // if(fifo_fd < 0){
-    //     printf("Error creating Fifo\n");
-    // }
-    // struct custom_event_data fifo_data = {
-    //     .fd = fifo_fd,
-    //     .functionnality = FIFO_INTERRUPT};
-    // struct epoll_event event_fifo = {
-    //     .events = EPOLLIN,
-    //     .data.ptr = &fifo_data,
-    // };
+    int fifo_fd = init_fifo();
+    if(fifo_fd < 0){
+        printf("Error creating Fifo\n");
+    }
 
-    // err = epoll_ctl(epfd, EPOLL_CTL_ADD, fifo_fd, &event_fifo);
-    // if(err < 0){
-    //     printf("Can't add FIFO to epoll err: %d\n", err);
-    // }
+    struct custom_event_data fifo_data = {
+        .fd = fifo_fd,
+        .functionnality = FIFO_INTERRUPT};
+    struct epoll_event event_fifo = {
+        .events = EPOLLET,
+        .data.ptr = &fifo_data,
+    };
+
+    err = epoll_ctl(epfd, EPOLL_CTL_ADD, fifo_fd, &event_fifo);
+    if(err < 0){
+        printf("Can't add FIFO to epoll err: %d\n", err);
+    }
     struct epoll_event list_events[10];
     int nbr_events = 0;
     char buff[ACK_READ_SIZE] = ""; // prepare buffre to read fd that interrupt (acknowledge)
-    int command[2];
+    
+    struct cmd command;
+
+
     while (1)
     {
         nbr_events = epoll_wait(epfd, list_events, 10, -1);
@@ -156,30 +168,24 @@ int main()
             switch (data->functionnality)
             {
             case FIFO_INTERRUPT:
-                err = fifo_read(data->fd, command, 2); //
+                err = fifo_read(data->fd, &command, sizeof(command)); //
                 if (err < 0)
-                    printf("Error reading FIFO. Not Enought elements\n");
-                /*TODO: Traiter les commandes dans command[0] avec l'argument
-                dans command[1]
-                PAS TESTE la fifo !
-                switch command[0]
-                */
-                switch (command[0])
+                    printf("Error reading FIFO. err: %d\n", err);
+                switch (command.cmd)
                 {
                 case FIFO_SET_FREQ:
                     fd = open(MYDEVICE FREQ, O_RDWR);
-                    sprintf(buff, "%d", command[1]);
-                    printf("Set new freq to %d", command[1]);
+                    sprintf(buff, "%d", command.value);
+                    printf("Set new freq to %d\n", command.value);
                     write(fd, buff, strlen(buff));
                     close(fd);
                     break;
                 case FIFO_SET_MANUAL:
                     fd = open(MYDEVICE IS_MANU, O_RDWR);
-                    sprintf(buff, "%d", command[1]);
-                    printf("Set mode to %d", command[1]);
+                    sprintf(buff, "%d", command.value);
+                    printf("Set mode to %d\n", command.value);
 
                     write(fd, buff, strlen(buff));
-                    printf("BTN_FREQ_RST\n");
                     break;
                 default:
                     break;

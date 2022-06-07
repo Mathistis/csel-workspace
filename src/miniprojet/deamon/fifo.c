@@ -23,6 +23,15 @@ int init_fifo(){
     return fd;
 }
 
+void fifo_get_event(struct k_fd* event, int fifofd){
+    event->fd = fifofd;
+    event->events.events = EPOLLET;
+    event->events.data.ptr = &event->data;
+    event->data.fd = fifofd;
+    event->data.functionnality = FIFO_INTERRUPT;
+}
+
+
 int fifo_read(int fd, void* buf, int size){
     
     int readen = read(fd, buf, size);    

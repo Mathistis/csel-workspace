@@ -31,7 +31,6 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-#include <sys/epoll.h>
 #include <stdio.h>
 #include "gpio.h"
 #include "fifo.h"
@@ -59,9 +58,9 @@
 #define RST_FREQ 0x10 // Attribute functionnality to a button
 #define DEC_FREQ 0x11 //  "
 #define INC_FREQ 0x12 //  "
-#define FIFO_INTERRUPT 0x13
-#define FIFO_SET_MANUAL 0x14 //  "
-#define FIFO_SET_FREQ 0x15   //  "
+
+#define FIFO_SET_MANUAL 0x14
+#define FIFO_SET_FREQ 0x15   
 #define INCREMENT_HZ 1
 
 
@@ -133,15 +132,10 @@ int main()
         printf("Error creating Fifo\n");
     }
 
-    struct custom_event_data fifo_data = {
-        .fd = fifo_fd,
-        .functionnality = FIFO_INTERRUPT};
-    struct epoll_event event_fifo = {
-        .events = EPOLLET,
-        .data.ptr = &fifo_data,
-    };
+    struct k_fd fifo_events;
+    fifo_get_event(&fifo_events, fifo_fd);
 
-    err = epoll_ctl(epfd, EPOLL_CTL_ADD, fifo_fd, &event_fifo);
+    err = epoll_ctl(epfd, EPOLL_CTL_ADD, fifo_fd, &fifo_events.events);
     if(err < 0){
         printf("Can't add FIFO to epoll err: %d\n", err);
     }
@@ -192,6 +186,7 @@ int main()
                 }
                 break;
             case INC_FREQ:
+
                 len = pread(data->fd, buff, ACK_READ_SIZE, 0);
                 if (len < 0)
                 {

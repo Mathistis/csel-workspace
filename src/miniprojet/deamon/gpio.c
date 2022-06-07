@@ -38,14 +38,13 @@
  */
 #define GPIO_EXPORT "/sys/class/gpio/export"
 #define GPIO_UNEXPORT "/sys/class/gpio/unexport"
-#define GPIO_LED_STATUS "/sys/class/gpio/gpio10"
-
-#define MYDEVICE "/sys/class/led_class/led_device"
-#define FREQ        "/freq"
-#define IS_MANU     "/is_manu"
+#define GPIO_LED "/sys/class/gpio/gpio"
+#define DIRECTION "/direction"
+#define VALUE "/value"
 
 #define ACK_READ_SIZE 20
-#define LED "10"
+#define LED_STATUS "10"
+#define LED_POWER "362"
 #define PIN_K1 "0"
 #define PIN_K2 "2"
 #define PIN_K3 "3"
@@ -102,22 +101,23 @@ int open_btn(struct pin * pin, struct k_fd* opened_fd, int len)
 
 int open_led()
 {
-    // unexport pin out of sysfs (reinitialization)
+
+
     int f = open(GPIO_UNEXPORT, O_WRONLY);
-    write(f, LED, strlen(LED));
+    write(f, LED_STATUS, strlen(LED_STATUS));
     close(f);
 
     // export pin to sysfs
     f = open(GPIO_EXPORT, O_WRONLY);
-    write(f, LED, strlen(LED));
+    write(f, LED_STATUS, strlen(LED_STATUS));
     close(f);
 
     // config pin
-    f = open(GPIO_LED_STATUS "/direction", O_WRONLY);
+    f = open(GPIO_LED LED_POWER DIRECTION, O_WRONLY);
     write(f, "out", 3);
     close(f);
 
     // open gpio value attribute
-    f = open(GPIO_LED_STATUS "/value", O_RDWR);
+    f = open(GPIO_LED LED_POWER VALUE, O_RDWR);
     return f;
 }

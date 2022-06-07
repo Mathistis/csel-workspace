@@ -1,8 +1,7 @@
 #pragma once
 #ifndef __GPIO
 #define __GPIO
-#include <sys/epoll.h>
-
+#include "event.h"
 
 struct pin
 {
@@ -14,17 +13,7 @@ struct pin
     int functionnality;
 };
 
-struct custom_event_data {
-    int fd;
-    int functionnality;
-};
 
-struct k_fd
-{
-    int fd;
-    struct epoll_event events;
-    struct custom_event_data data;
-};
 
 int open_btn(struct pin * pin, struct k_fd* opened_fd, int len);
 

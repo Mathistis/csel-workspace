@@ -9,7 +9,7 @@
 int on_timer_rised(void);
 
 static int* current_mode;
-static int* frequency_manual;
+static int* freq;
 
 int init_controller(int* is_manu, int* freq_manual){
     int err;
@@ -17,7 +17,7 @@ int init_controller(int* is_manu, int* freq_manual){
     if(err == 0) err = init_my_timer(&on_timer_rised);
     if(err == 0) init_temp();
     current_mode = is_manu;
-    frequency_manual = freq_manual;
+    freq = freq_manual;
     return err;
 }
 
@@ -35,22 +35,23 @@ int mode_auto(void){
         toggle_led();
     }
     if(temp < 35 ){
-        return 2; 
+        *freq = 2;
     }
     if(temp < 40){
-        return 5; 
+        *freq = 5;
     }
     if(temp < 45){
-        return 10; 
+        *freq = 10;
     }
     else{
-        return 20; 
+        *freq = 20;
     }
+    return *freq;
 }
 
 int mode_manual(void){
     toggle_led();
-    return *frequency_manual;
+    return *freq;
 }
 
 

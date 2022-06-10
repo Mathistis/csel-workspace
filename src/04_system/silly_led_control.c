@@ -212,7 +212,7 @@ int main()
             delault_spec,
             delault_spec,
         };
-        
+
     err = timerfd_settime(timerfd, 0, &my_interval, NULL);
     if (err < 0)
         printf("[Timers] timerfd_settime() = -1\n");

@@ -10,7 +10,7 @@
 #define BASE_FREQ 2
 
 static struct timer_list myTimer;
-static int (*handler)(void);
+static int (*handler)(void); //silly method to expose this handler to timer_handler but don't see any betterway
 
 void timer_handler(struct timer_list *trigged_timer)
 {

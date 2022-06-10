@@ -55,6 +55,8 @@
         "sched.h": "c",
         "kernel.h": "c",
         "stat.h": "c",
-        "fifo.h": "c"
+        "fifo.h": "c",
+        "fcntl.h": "c",
+        "stdio.h": "c"
     }
 }

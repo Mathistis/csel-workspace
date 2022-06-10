@@ -15,7 +15,6 @@ mymodule-objs += timer_controller.o
 mymodule-objs += temp_controller.o	
 
 
-
 CFLAGS_skeleton.o := -DDEBUG
 
 # Part executed when called from standard make in module source directory:

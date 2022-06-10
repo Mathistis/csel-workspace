@@ -55,28 +55,27 @@ void set_frequency(int freq){
         printf("Careful, frequency over 100Hz may not be visible but it will be set anyway \n");
     }
 
-    printf("Send set frequency with freq = %d",freq);
-    // struct IPC_Command freq_command = {
-    //     .cmd = FIFO_SET_FREQ,
-    //     .value = val,
-    // };
-    // fifo_write(&freq_command, sizeof(freq_command));
+    // printf("Send set frequency with freq = %d",freq);
+    struct IPC_Command freq_command = {
+        .cmd = FIFO_SET_FREQ,
+        .value = freq,
+    };
+    fifo_write(&freq_command, sizeof(freq_command));
     
 }
 
 void set_manual(int val){
     if(val == 0 || val == 1){
-        // struct IPC_Command manual_command = {
-        //     .cmd = FIFO_SET_MANUAL,
-        //     .value = val,
-        // };
-        // fifo_write(&manual_command, sizeof(manual_command));
-        printf("Set manual with value of %d\n",val);
+        struct IPC_Command manual_command = {
+            .cmd = FIFO_SET_MANUAL,
+            .value = val,
+        };
+        fifo_write(&manual_command, sizeof(manual_command));
+        // printf("Set manual with value of %d\n",val);
     }
     else{
         printf("Invalid value of manual command ! Remember it has to be 0 or 1 \n");
     }
-    
 }
 
 int main()

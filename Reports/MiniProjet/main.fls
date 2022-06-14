@@ -501,6 +501,16 @@ INPUT ./imageSources/LogoMSE.png
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplrc9e.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplrc8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
+INPUT imageSources/Led_Frequencies.png
+INPUT ./imageSources/Led_Frequencies.png
+INPUT ./imageSources/Led_Frequencies.png
+INPUT imageSources/sysfs_init.png
+INPUT ./imageSources/sysfs_init.png
+INPUT ./imageSources/sysfs_init.png
+INPUT imageSources/LogoMSE.png
+INPUT ./imageSources/LogoMSE.png
+INPUT imageSources/LogoMSE.png
+INPUT ./imageSources/LogoMSE.png
 INPUT imageSources/LogoMSE.png
 INPUT ./imageSources/LogoMSE.png
 INPUT main.aux

@@ -3,7 +3,7 @@
 #define __FIFO
 
 #include "event.h"
-#define PATH "../ipc"
+#define PATH "/workspace/src/miniprojet/ipc"
 #define FIFO_INTERRUPT 0x13
 #define FIFO_SET_MANUAL 0x14
 #define FIFO_SET_FREQ 0x15

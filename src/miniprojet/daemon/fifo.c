@@ -8,7 +8,7 @@
 
 #include "fifo.h"
 
-#define MODE 0666
+#define MODE 0777
 
 int init_fifo(){
     printf("INITIALIZING FIFO\n");

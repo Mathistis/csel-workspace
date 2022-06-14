@@ -58,5 +58,7 @@
         "fifo.h": "c",
         "fcntl.h": "c",
         "stdio.h": "c"
-    }
+    },
+    "codesnap.backgroundColor": "#ffffff",
+    "codesnap.showWindowControls": false
 }

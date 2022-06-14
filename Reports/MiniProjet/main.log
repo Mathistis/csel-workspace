@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  14 JUN 2022 07:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  14 JUN 2022 17:45
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1385,11 +1385,11 @@ File: imageSources/Led_Frequencies.png Graphic file (type png)
 <use imageSources/Led_Frequencies.png>
 Package pdftex.def Info: imageSources/Led_Frequencies.png  used on input line 69.
 (pdftex.def)             Requested size: 400.11694pt x 154.91937pt.
-<imageSources/sysfs_init.png, id=83, 676.5275pt x 422.57875pt>
-File: imageSources/sysfs_init.png Graphic file (type png)
-<use imageSources/sysfs_init.png>
-Package pdftex.def Info: imageSources/sysfs_init.png  used on input line 91.
-(pdftex.def)             Requested size: 400.11694pt x 249.93185pt.
+<imageSources/Skeleton_Init.png, id=83, 785.93625pt x 507.8975pt>
+File: imageSources/Skeleton_Init.png Graphic file (type png)
+<use imageSources/Skeleton_Init.png>
+Package pdftex.def Info: imageSources/Skeleton_Init.png  used on input line 91.
+(pdftex.def)             Requested size: 400.11694pt x 258.57481pt.
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
 Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 95.
@@ -1399,42 +1399,52 @@ Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 95.
  <./imageSources/Led_Frequencies.png>]
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
-Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 95.
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 97.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
- [4 <./imageSources/sysfs_init.png>]
+ [4 <./imageSources/Skeleton_Init.png>]
+<imageSources/Utility_Fct_Module.png, id=95, 632.3625pt x 717.68124pt>
+File: imageSources/Utility_Fct_Module.png Graphic file (type png)
+<use imageSources/Utility_Fct_Module.png>
+Package pdftex.def Info: imageSources/Utility_Fct_Module.png  used on input line 101.
+(pdftex.def)             Requested size: 400.11694pt x 454.11275pt.
+File: imageSources/LogoMSE.png Graphic file (type png)
+<use imageSources/LogoMSE.png>
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 106.
+(pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
+ [5 <./imageSources/Utility_Fct_Module.png>]
 Chapitre 4.
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
-Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 99.
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 110.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
-[5
+[6
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 110.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 110.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 110.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 110.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: A5432ECDBF1B6E9ED92A1223769E037F;215.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
  ) 
 Here is how much of TeX's memory you used:
- 39152 strings out of 481239
- 752284 string characters out of 5920378
- 1582694 words of memory out of 5000000
- 53672 multiletter control sequences out of 15000+600000
+ 39161 strings out of 481239
+ 752560 string characters out of 5920378
+ 1582780 words of memory out of 5000000
+ 53678 multiletter control sequences out of 15000+600000
  563816 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,16n,96p,1286b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,17n,96p,1286b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (7 pages, 191661 bytes).
+Output written on main.pdf (8 pages, 265264 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 128 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

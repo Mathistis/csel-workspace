@@ -88,10 +88,21 @@ permettant d'actualiser via le sysfs les états des leds.\newline
 Ce module va également créer et initialiser dans le sysfs les fichiers
 nécessaires à la transmission de nos informations.
 \begin{figure}[H]
-    \includegraphics[width= \textwidth]{imageSources/sysfs_init.png}
+    \includegraphics[width= \textwidth]{imageSources/Skeleton_Init.png}
     \caption{Création des fichiers nécessaires dans le sysfs}
     \label{fig:sysfsInit}
 \end{figure}
+Dans l'initialisation du module (figure \ref{fig:sysfsInit}), on se charge également de créer le device pour
+le sysfs ainsi que les différents fichier qui nous servirons pour lire et écrire
+nos valeurs.\newpage
+Nous avons également dans ce module déclaré quelque fonctions permettant la
+lecture ainsi que l'écriture des fichiers dans le sysfs.
+\begin{figure}[H]
+    \includegraphics[width= \textwidth]{imageSources/Utility_Fct_Module.png}
+    \caption{Fonctions de lecture/écriture des fichiers du sysfs}
+    \label{fig:sysfsFunctions}
+\end{figure}
+
 \chapter{Conception du daemon}
 Ce chapitre traite du développement du deamon offrant les services permettant la
 gestion de la fréquence ainsi que le choix du mode.

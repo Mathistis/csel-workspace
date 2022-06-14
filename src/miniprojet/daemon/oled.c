@@ -1,8 +1,8 @@
 #include "oled.h"
 #include "ssd1306.h"
 #include <stdio.h>
-#define TEMP_FORMAT "Temp: %d'C"
-#define FREQ_FORMAT "Freq: %dHz"
+#define TEMP_FORMAT "Temp: %3d'C"
+#define FREQ_FORMAT "Freq: %3dHz"
 #define MODE_FORMAT "Mode: "
 #define MODE_AUTO "auto"
 #define MODE_MANU "manu"

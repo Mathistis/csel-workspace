@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{setsid}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{syslog}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{LOG\PYGZus{}ERR}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}ERROR while creating new session\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{exit}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

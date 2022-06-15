@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}define FIFO\PYGZus{}SET\PYGZus{}MANUAL 0x14}
+\PYG{c+cp}{\PYGZsh{}define FIFO\PYGZus{}SET\PYGZus{}FREQ 0x15}
+\end{Verbatim}

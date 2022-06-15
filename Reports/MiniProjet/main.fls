@@ -485,9 +485,14 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmb.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplb9e.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmb.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplri9e.tfm
+INPUT main.lof
+INPUT main.lof
+OUTPUT main.lof
 INPUT imageSources/LogoMSE.png
 INPUT ./imageSources/LogoMSE.png
+INPUT ./imageSources/LogoMSE.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplri9e.tfm
+INPUT imageSources/LogoMSE.png
 INPUT ./imageSources/LogoMSE.png
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/palatino/pplri9e.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm

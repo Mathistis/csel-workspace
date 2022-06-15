@@ -18,7 +18,7 @@
 \newpage
 
 \maketableofcontent
-
+\listoffigures
 \medskip
 
 \titleformat{\chapter}[display]
@@ -268,8 +268,13 @@ Cette application utilise la FIFO pour communiquer avec le daemon, pour ceci un
 fichier virtuel est créé au chemin suivant
 :\textit{/workspace/src/miniprojet/ipc}. Ce fichier représente la fifo qui
 permet de communiquer entre la \textit{CLI} et le daemon.\newline
-Afin de clarifier le code, nous avons défini une structure pour les commandes
-entrées qui est la suivante :
+Afin de clarifier le code, nous avons établis la liste de tous les types de
+commandes que peut entrer l'utilisateur. Cette liste est un tableau de type
+\textit{struct usr\_command}. Chaque type de commande est composé d'un
+\textit{string} pour reconnaître l'entrée de l'utilisateur, d'un nombre
+spécifique d'argumentset d'un pointeur de fonction est également présent dans la
+structure afin d'indiquer quelle fonction executer pour traiter cette commande.
+Cette structure est donc la suivante:
 \begin{minted}[linenos=false,frame=none]{c}
 struct usr_command
 {
@@ -285,6 +290,10 @@ entrées seront vérifiées puis envoyées au daemon via la fifo. Nous avons aus
 imaginé deux commandes spéciales, help et quit qui permettent comme leur nom
 l'indique d'obtenir une aide sur la syntaxe ainsi que la liste des commandes
 disponibles ainsi que de quitter l'application.
+A chaque fois que l'utilisateur presse sur \textit{[ENTER]}, le programme parcourt la
+liste de commandes établie précédemment et compare les \textit{string}.
+Si la commande entrée est identique à une des commandes prédéfinies, la fonction qui y est attachée est executée.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{imageSources/Cli_Example.png}
@@ -307,7 +316,7 @@ commande depuis sa saisie dans l'application \textit{CLI} jusqu'au module noyau.
 \chapter{Conclusion}
 Nous avons beaucoup apprécié ce projet car il nous a vraiment permis d'utiliser
 toutes les notions vues en cours afin d'en faire un projet complet, fonctionnel
-et réel. Nous avons réussi à tout implémenter de manière fonctionnelle et nous
+et réel. Nous avons réussi à tout implémenter de manière fonctionnelle et sans problèmes et nous
 avons également essayé de fournir un code le plus propre possible afin de
 potentiellement pouvoir réutiliser celui-ci dans d'autres applications futures.
 \begin{figure}[H]

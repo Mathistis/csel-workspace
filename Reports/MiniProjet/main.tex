@@ -152,16 +152,16 @@ grâce au module \textit{thermal} sité dans
 propre module. Cette lecture s'effectue toutes les 500ms (valeur choisie
 arbitrairement pas nous-même), et lorsqu'il a pu obtenir ces valeurs, il va se
 charger de mettre à jour l'affichage sur l'écran OLED. \newline
-En plus de ce timer, il gère les boutons 1 à 3 afin de gérer le choix du mode
-ainsi que la fréquence de la led lorsque le mode est manuel. Il se sert des
-interruptions et de \textit{epoll} ainsi que du module \textit{GPIO} pour gérer
-les boutons et ensuite écrit les valeurs dans le sysfs grâce au module
-implémenté précédemment.\newline
-Comme demandé dans la consigne, nous avons implémenté une FIFO afin de fournir
-une interface IPC (Inter Process Communication) qui est également utilisée par
+En plus de ce timer, il gère les boutons 1 à 3 afin de choisir le mode de fonctionnement
+ainsi que la fréquence de la led lorsque le mode est manuel.
+Le timer ainsi que les boutons et l'interface IPC sont gérés sous formes
+d'évènements. Le multiplexeur d'entrées/sortie \textit{epoll} permet
+de réveiller le programme lorsqu'un évènement survient et donc d'utiliser
+efficacement les ressources CPU. Comme demandé dans la consigne, nous avons
+implémenté une FIFO afin de fournir une interface IPC (Inter Process Communication) qui est également utilisée par
 \textit{epoll}. Pour la mise en place de cette interface, nous avons défini un
 simple protocole qui se présente de la manière suivante:\newline
-Chaque message est de taille 8 bytes, en se basant sur la structure définie ci-dessous:
+Chaque message est de taille 8 bytes, et se base sur la structure définie ci-dessous:
 \begin{minted}[linenos=false,frame= none]{c}
 struct cmd
 {
@@ -191,15 +191,15 @@ choix du mode les valeurs sont 0 ou 1, pour la fréquence les valeurs sont entre
 Lorsqu'une commande arrive, \textit{epoll} réveille le daemon et la commande est
 traitée.\newpage
 Afin de créer le daemon, nous avons suivi la procédure vue en cours qui consiste
-é créer un processus enfant puis de exit le processus parent afin d'avoir un
-enfant détaché (daemon) qui va être rattaché au processus \textit{init} ceci est fait dans la fonction \textit{fork\_process()}.
+à créer un processus enfant puis de terminer le processus parent afin d'avoir un
+enfant détaché (daemon) qui est ensuite rattaché au processus \textit{init} ceci est fait dans la fonction \textit{fork\_process()}.
 \begin{figure}[H]
     \centering
     \includegraphics[width= 0.7\textwidth]{imageSources/fork_process.png}
     \caption{Fonction fork\_process}
     \label{fig:ForkProcess}
 \end{figure}
-On va ensuite créer une nouvelle session pour le nouveau processus avec le code
+On crée ensuite une nouvelle session pour le processus avec le code
 suivant:
 \begin{minted}[linenos=false,frame= none]{c}
 if (setsid() == -1) {
@@ -207,7 +207,7 @@ if (setsid() == -1) {
     exit (1);
 }
 \end{minted}
-Le processus sera ensuite session leader mais ce n'est pas encore notre but,
+Le processus est maintenant session leader mais ce n'est pas encore notre but,
 nous allons alors encore une fois utiliser \textit{fork\_process()} afin de
 recréer un enfant et terminer son parent. une fois ceci fait, le processus démon
 n'est plus session leader et n'a également plus accès au terminal.\newline
@@ -226,15 +226,14 @@ manière suivante :
     \label{fig:CatchSignal}
 \end{figure}
 \newpage
-Nous avons ensuite également mis à jour le masque pour la création de fichiers
-avec la fonction \textit{umask()} et également fermé tous les descripteurs de
+Nous mettons ensuite à jour le masque pour la création de fichiers
+avec la fonction \textit{umask()} puis fermé tous les descripteurs de
 fichiers (\textit{close}), redirigé stdin,stdout,stderr vers \textit{/dev/null}
 avec les fonctions \textit{open} et \textit{dup2}, puis enfin ouvert un fichier
 de logging avec \textit{openlog()}.\newline
-Pour la gestion du daemon, nous avons également opté pour un principe de
+Pour la gestion du daemon, nous avons à nouveau opté pour un principe de
 controller afin de gérer les différents évènements et actions du daemon. Après
-la création du daemon, on utilise la fonction \textit{start\_controller()} qui va
-se charger d'initialiser l'écran OLED, de créer les différents contextes
+la création du daemon, on utilise la fonction \textit{start\_controller()} qui se charge d'initialiser l'écran OLED, de créer les différents contextes
 \textit{epoll} pour les boutons, initialiser la FIFO pour l'interface IPC, créer
 un contrôle \textit{epoll} pour la FIFO et le timer (utilisé pour le
 rafraichissement).\newline
@@ -245,7 +244,8 @@ facilitant la compréhension du code (voir dans
 \textit{/workspace/src/miniprojet/daemon}).\newline
 Chaque gpio correspondant aux boutons S1,S2,S3 est configuré dans le fichier
 \textit{controller.c} à l'aide de la fonction \textit{open\_btn()} recupérée
-d'un ancien TP. (\textit{/workspace/src/04\_system/silly\_led\_control.c}) Comme
+d'un ancien TP. Le fichier source de cette fonction se trouvant au chemin
+suivant : \textit{/workspace/src/04\_system/silly\_led\_control.c}. Comme
 dans cet ancien TP nous avons multiplexé les entrées (\textit{epoll}) afin
 d'obtenir des évènements (bouton, timer, fifo) et pour chaque évènement nous
 avons défini une structure avec un pointeur de fonction permettant d'exécuter le
@@ -254,16 +254,68 @@ code propre à chaque évènement.\newline
 Nous n'avons pas rencontré de difficultés particulières pour développer le
 daemon si ce n'est le debug car en effet un daemon n'offre pas vraiment de
 possibilités de print à l'écran (uniquement dans le fichier de logging créé mais
-e n'est pas très pratique). C'est pourquoi nous avons tout d'abord développé son
-fonctionnement comme si c'était une application cli classique et une fois
-assurés du bon fonctionnement de l'application, nous avons instauré les
-fonctions permettant de transformer celle-ci en daemon.\newline
+ce n'est pas très pratique). C'est pourquoi nous avons tout d'abord développé son
+fonctionnement comme si c'était une application \textit{CLI} classique et une fois
+assurés du bon fonctionnement de l'application, nous l'avons transformé en
+deamon avec la méthode vue précédemment.\newline
 
 
 \chapter{Application CLI}
 Bien que rendue optionnelle sur la fin du projet, nous avons décidé
-d'implémenter une application fournissant à l'utilisateur une interface CLI pour
+d'implémenter une application fournissant à l'utilisateur une interface \textit{CLI} pour
 la gestion du mode et le choix de la fréquence.\newline
+Cette application utilise la FIFO pour communiquer avec le daemon, pour ceci un
+fichier virtuel est créé au chemin suivant
+:\textit{/workspace/src/miniprojet/ipc}. Ce fichier représente la fifo qui
+permet de communiquer entre la \textit{CLI} et le daemon.\newline
+Afin de clarifier le code, nous avons défini une structure pour les commandes
+entrées qui est la suivante :
+\begin{minted}[linenos=false,frame=none]{c}
+struct usr_command
+{
+    char command[CMD_LENGTH];
+    int nArgs;
+    void (*fct)(int);
+};
+\end{minted}
+Dans cette structure nous avons un string correspondant à la commande entrée, un
+nombre d'arguments et une fonction permettant de traiter la commande.\newline
+C'est donc dans les fonctions de traitement des commandes que les valeurs
+entrées seront vérifiées puis envoyées au daemon via la fifo. Nous avons aussi
+imaginé deux commandes spéciales, help et quit qui permettent comme leur nom
+l'indique d'obtenir une aide sur la syntaxe ainsi que la liste des commandes
+disponibles ainsi que de quitter l'application.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imageSources/Cli_Example.png}
+    \caption{Application CLI}
+    \label{fig:CLIApp}
+\end{figure}
+On observe sur la figure \ref{fig:CLIApp} un example d'utilisation de
+l'application \textit{CLI}, avec un premier appel à la commande \textit{help}, puis une
+utilisation des commandes \textit{manual} et \textit{freq} afin de passer en
+mode manuel et modifier la fréquence. Et enfin l'utilisation de la commande
+\textit{quit} pour terminer l'application.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/Cli_Command_Path.png}
+    \caption{Cheminement d'une commande}
+    \label{fig:CliCommandPAth}
+\end{figure}
+On observe sur la figure \ref{fig:CliCommandPAth} le cheminement complet d'une
+commande depuis sa saisie dans l'application \textit{CLI} jusqu'au module noyau.
+\chapter{Conclusion}
+Nous avons beaucoup apprécié ce projet car il nous a vraiment permis d'utiliser
+toutes les notions vues en cours afin d'en faire un projet complet, fonctionnel
+et réel. Nous avons réussi à tout implémenter de manière fonctionnelle et nous
+avons également essayé de fournir un code le plus propre possible afin de
+potentiellement pouvoir réutiliser celui-ci dans d'autres applications futures.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imageSources/OLED_Final.png}
+    \caption{Affichage final des valeurs sur l'écran OLED}
+    \label{fig:OLEDFInal}
+\end{figure}
 \end{document}
 
 

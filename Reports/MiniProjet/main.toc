@@ -14,3 +14,5 @@
 \contentsline {section}{\numberline {4.1}Difficultées rencontrées sur le daemon}{9}{section.4.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Application CLI}{10}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusion}{12}{chapter.6}%

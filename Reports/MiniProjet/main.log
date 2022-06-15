@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  15 JUN 2022 17:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.4.1)  15 JUN 2022 18:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1298,7 +1298,7 @@ Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
 (french.ldf)             reported on input line 14.
 LaTeX Info: Redefining \up on input line 14.
-<imageSources/LogoHESSO.png, id=62, 530.98375pt x 319.1925pt>
+<imageSources/LogoHESSO.png, id=66, 530.98375pt x 319.1925pt>
 File: imageSources/LogoHESSO.png Graphic file (type png)
 <use imageSources/LogoHESSO.png>
 Package pdftex.def Info: imageSources/LogoHESSO.png  used on input line 16.
@@ -1347,7 +1347,7 @@ l.20 \maketableofcontent
 
 ]
 Chapitre 1.
-<imageSources/LogoMSE.png, id=83, 507.8975pt x 73.27374pt>
+<imageSources/LogoMSE.png, id=88, 507.8975pt x 73.27374pt>
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
 Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 56.
@@ -1367,7 +1367,7 @@ l.56 \chapter
 
  <./imageSources/LogoMSE.png>]
 Chapitre 2.
-<imageSources/Diagramme_Fonctions.drawio.png, id=89, 456.70625pt x 531.9875pt>
+<imageSources/Diagramme_Fonctions.drawio.png, id=94, 456.70625pt x 531.9875pt>
 File: imageSources/Diagramme_Fonctions.drawio.png Graphic file (type png)
 <use imageSources/Diagramme_Fonctions.drawio.png>
 Package pdftex.def Info: imageSources/Diagramme_Fonctions.drawio.png  used on input line 58.
@@ -1387,12 +1387,12 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-<imageSources/Led_Frequencies.png, id=98, 360.34625pt x 139.52126pt>
+<imageSources/Led_Frequencies.png, id=103, 360.34625pt x 139.52126pt>
 File: imageSources/Led_Frequencies.png Graphic file (type png)
 <use imageSources/Led_Frequencies.png>
 Package pdftex.def Info: imageSources/Led_Frequencies.png  used on input line 93.
 (pdftex.def)             Requested size: 400.11694pt x 154.91937pt.
-<imageSources/Skeleton_Init.png, id=100, 785.93625pt x 507.8975pt>
+<imageSources/Skeleton_Init.png, id=105, 785.93625pt x 507.8975pt>
 File: imageSources/Skeleton_Init.png Graphic file (type png)
 <use imageSources/Skeleton_Init.png>
 Package pdftex.def Info: imageSources/Skeleton_Init.png  used on input line 121.
@@ -1409,7 +1409,7 @@ File: imageSources/LogoMSE.png Graphic file (type png)
 Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 127.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
  [4 <./imageSources/Skeleton_Init.png>]
-<imageSources/Utility_Fct_Module.png, id=113, 632.3625pt x 717.68124pt>
+<imageSources/Utility_Fct_Module.png, id=118, 632.3625pt x 717.68124pt>
 File: imageSources/Utility_Fct_Module.png Graphic file (type png)
 <use imageSources/Utility_Fct_Module.png>
 Package pdftex.def Info: imageSources/Utility_Fct_Module.png  used on input line 131.
@@ -1431,7 +1431,7 @@ Chapitre 4.
 \openout3 = `main.pyg'.
 
  (./_minted-main/BC63A5242988E9822568AB4DEE88442A042D2615758B6C3F03C186B02CFC62B2.pygtex)
-<imageSources/Protocol.png, id=125, 379.4175pt x 161.60374pt>
+<imageSources/Protocol.png, id=130, 379.4175pt x 161.60374pt>
 File: imageSources/Protocol.png Graphic file (type png)
 <use imageSources/Protocol.png>
 Package pdftex.def Info: imageSources/Protocol.png  used on input line 187.
@@ -1448,7 +1448,7 @@ Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 192.
 [7
 
  <./imageSources/Protocol.png>]
-<imageSources/fork_process.png, id=132, 734.745pt x 210.7875pt>
+<imageSources/fork_process.png, id=137, 734.745pt x 210.7875pt>
 File: imageSources/fork_process.png Graphic file (type png)
 <use imageSources/fork_process.png>
 Package pdftex.def Info: imageSources/fork_process.png  used on input line 198.
@@ -1456,12 +1456,12 @@ Package pdftex.def Info: imageSources/fork_process.png  used on input line 198.
 \openout3 = `main.pyg'.
 
  (./_minted-main/CD0AA007CB30C2E335593BC463578FCD042D2615758B6C3F03C186B02CFC62B2.pygtex)
-<imageSources/signals_capture.png, id=133, 676.5275pt x 172.645pt>
+<imageSources/signals_capture.png, id=138, 676.5275pt x 172.645pt>
 File: imageSources/signals_capture.png Graphic file (type png)
 <use imageSources/signals_capture.png>
 Package pdftex.def Info: imageSources/signals_capture.png  used on input line 218.
 (pdftex.def)             Requested size: 400.11694pt x 102.10991pt.
-<imageSources/catch_signal.png, id=134, 560.0925pt x 118.4425pt>
+<imageSources/catch_signal.png, id=139, 560.0925pt x 118.4425pt>
 File: imageSources/catch_signal.png Graphic file (type png)
 <use imageSources/catch_signal.png>
 Package pdftex.def Info: imageSources/catch_signal.png  used on input line 224.
@@ -1471,11 +1471,6 @@ File: imageSources/LogoMSE.png Graphic file (type png)
 Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 228.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
  [8 <./imageSources/fork_process.png> <./imageSources/signals_capture.png> <./imageSources/catch_signal.png>]
-Overfull \hbox (38.02287pt too wide) in paragraph at lines 229--253
-\T1/pplx/m/n/10 l'aide de la fonc-tion \T1/pplx/m/it/10 open_btn() \T1/pplx/m/n/10 re-cu-pé-rée d'un an-cien TP. (\T1/pplx/m/it/10 /works-pace/src/04_system/silly_led_control.c\T1/pplx/m/n/10 )
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 229--253
 
  []
@@ -1491,45 +1486,71 @@ Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 263.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
 [9]
 Chapitre 5.
+\openout3 = `main.pyg'.
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--267
-
- []
-
+(./_minted-main/DE0CC1DC5CDDEA9A863EC9E996017FE1042D2615758B6C3F03C186B02CFC62B2.pygtex)
+<imageSources/Cli_Example.png, id=151, 539.01375pt x 131.74219pt>
+File: imageSources/Cli_Example.png Graphic file (type png)
+<use imageSources/Cli_Example.png>
+Package pdftex.def Info: imageSources/Cli_Example.png  used on input line 290.
+(pdftex.def)             Requested size: 400.11694pt x 97.79524pt.
+<imageSources/Cli_Command_Path.png, id=153, 392.46625pt x 413.545pt>
+File: imageSources/Cli_Command_Path.png Graphic file (type png)
+<use imageSources/Cli_Command_Path.png>
+Package pdftex.def Info: imageSources/Cli_Command_Path.png  used on input line 301.
+(pdftex.def)             Requested size: 280.08063pt x 295.13974pt.
 File: imageSources/LogoMSE.png Graphic file (type png)
 <use imageSources/LogoMSE.png>
-Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 267.
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 305.
 (pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
-[10
+ [10
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 267.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 267.
+ <./imageSources/Cli_Example.png (PNG copy)>]
+File: imageSources/LogoMSE.png Graphic file (type png)
+<use imageSources/LogoMSE.png>
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 307.
+(pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
+ [11 <./imageSources/Cli_Command_Path.png>]
+Chapitre 6.
+<imageSources/OLED_Final.png, id=167, 3035.34pt x 4047.12pt>
+File: imageSources/OLED_Final.png Graphic file (type png)
+<use imageSources/OLED_Final.png>
+Package pdftex.def Info: imageSources/OLED_Final.png  used on input line 315.
+(pdftex.def)             Requested size: 280.08063pt x 373.42644pt.
+File: imageSources/LogoMSE.png Graphic file (type png)
+<use imageSources/LogoMSE.png>
+Package pdftex.def Info: imageSources/LogoMSE.png  used on input line 319.
+(pdftex.def)             Requested size: 152.37042pt x 21.98228pt.
+[12
+
+ <./imageSources/OLED_Final.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 319.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 319.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 267.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 267.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 319.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 319.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 55EE78AF3EA9E1F39AE8168D5C73C2CE;444.
+(rerunfilecheck)             Checksum: 66F60180A625A4D31EF51E5342869AAC;489.
 runsystem(rm main.pyg)...executed.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 267.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 319.
  ) 
 Here is how much of TeX's memory you used:
- 39444 strings out of 481239
- 758348 string characters out of 5920378
- 1585341 words of memory out of 5000000
- 53919 multiletter control sequences out of 15000+600000
+ 39478 strings out of 481239
+ 759520 string characters out of 5920378
+ 1585605 words of memory out of 5000000
+ 53941 multiletter control sequences out of 15000+600000
  566436 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 81i,16n,96p,1286b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 81i,17n,96p,1286b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (12 pages, 397568 bytes).
+Output written on main.pdf (14 pages, 15989707 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 215 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 203 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 

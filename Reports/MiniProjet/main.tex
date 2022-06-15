@@ -62,9 +62,30 @@ du processeur. Les fonctionnalités suivantes seront donc implémentées:
 \chapter{Conception du module}
 Ce chapitre traite du développement du module noyau permettant de surveiller la
 température du processeur ainsi que la gestion du clignotement de la LED status.
-Ce module utilise le sysfs afin de gérer les deux modes de fonctionnement
-(manuel/automatique) et la fréquence de clignotement de la led Status. Selon les
-spécifications, les différentes fréquences de clignotement de la led sont :
+Ce module est dans le répertoire class et est composé de deux attributs:
+\begin{itemize}
+    \item is\_manu
+    \item freq
+\end{itemize}
+Ces deux attributs sont représentés dans le userspace par des fichiers du sysfs.
+Le but de ce module est de faire clignoter la LED en mode automatique (si
+is\_manu est à 0) ou en mode manuel (si is\_manu est à 1). Le module implémente
+un timer (\textit{<linux/timer.h>}) (voir fichiers \textit{timer\_controller.h
+et .c}) qui est créé avec une fonction à exécuter à
+chaque fois que son décompte est terminé. Lorsque le temps est écoulé, le
+programme vérifie le mode actuel grâce à l'attribut \textit{is\_manu} et si le
+mode actuel est manuel, il va regarder la fréquence inscrite dans le fichier
+\textit{freq} puis calculer le prochain \textit{jiffies} correspondant à la
+période de la fréquence de la manière suivante :
+\usemintedstyle{vs}
+\begin{minted}[linenos=False,frame=none]{c}
+#define NEXT_JIFFIE_FROM_FREQ(freq) (jiffies + (HZ / freq))
+\end{minted}
+Il va ensuite changer l'état de la LED et réamorcer le timer.\newline
+Pour le mode automatique, il va simplement lire la température du
+microprocesseur et obtenir la fréquence correspondante (voir figure
+\ref{fig:ledFrequencies}), puis écrire cette valeur dans le fichier freq et
+réamorcer le timer.
 \begin{figure}[H]
     \includegraphics[width= \textwidth]{imageSources/Led_Frequencies.png}
     \caption{Fréquences pour la led en mode automatique}
@@ -82,11 +103,16 @@ Un autre code présent dans l'utilisation du module est le
 \textit{temp\_controller}, celui-ci permet à l'aide de la bibliothèque
 \textit{linux/thermal.h} de récupérer la température actuelle du
 processeur.\newline
-Toutes ces fonctions sont alors utilisées (via le controller) dans le fichier
-\textit{skeleton.c} dans celui-ci se trouvent les différentes méthodes
-permettant d'actualiser via le sysfs les états des leds.\newline
+Dans le fichier \textit{skeleton.c} (en quelques sorte le main du module), nous
+appelons la fonction \textit{init\_controller} qui va permettre l'initialisation
+des gpio, du timer ainsi que de la lecture de la température.\newline
 Ce module va également créer et initialiser dans le sysfs les fichiers
-nécessaires à la transmission de nos informations.
+nécessaires à la transmission de nos informations.\newline
+Notre module étant de type \textit{class} il possède des attributs qui seront
+stocké dans le sysfs sous \textit{/sys/class/<mod\_name/...} et lors de la
+déclaration des attributs du module (voir figure \ref{fig:sysfsInit}), on
+définit deux variables statiques au module ainsi que deux méthodes de lecture et
+écriture qui permettront de gérer ces deux fichiers.
 \begin{figure}[H]
     \includegraphics[width= \textwidth]{imageSources/Skeleton_Init.png}
     \caption{Création des fichiers nécessaires dans le sysfs}
@@ -102,7 +128,17 @@ lecture ainsi que l'écriture des fichiers dans le sysfs.
     \caption{Fonctions de lecture/écriture des fichiers du sysfs}
     \label{fig:sysfsFunctions}
 \end{figure}
-
+On observe dans la figure \ref{fig:sysfsFunctions} que ces fonctions permettent
+de lire et écrire les différents fichiers correspondant par exemple au mode
+manuel ou l'affichage de la fréquence.\newpage
+\section{Difficultés rencontrées sur le module}
+Nous avons eu quelques soucis à fournir au début un code clair et bien séparé
+c'est pourquoi nous avons opté pour la solution des controllers ainsi que des
+fichiers séparés.\newline
+Une autre difficulté fût de bien comprendre que \textit{DEVICE\_ATTR} est en
+réalité une macro qui permet de créer plein de choses différentes concernant les
+fichiers du sysfs et au premier abord nous n'avions pas pleinement conscience de
+cela et avons eu un peu de peine à mettre en place ceci.
 \chapter{Conception du daemon}
 Ce chapitre traite du développement du deamon offrant les services permettant la
 gestion de la fréquence ainsi que le choix du mode.

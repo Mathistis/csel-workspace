@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}define NEXT\PYGZus{}JIFFIE\PYGZus{}FROM\PYGZus{}FREQ(freq) (jiffies + (HZ / freq))}
+\end{Verbatim}
